@@ -1,0 +1,131 @@
+@import "tailwindcss";
+
+:root {
+  --color-ink: #17150f;
+  --color-paper: #f7f2e7;
+  --color-paper-dim: #eee5d0;
+  --color-night: #0e0d0b;
+  --color-night-soft: #1b1913;
+  --color-gold-deep: #8a6a2f;
+  --color-gold: #c9a227;
+  --color-gold-light: #e7cd86;
+  --color-line: #ddd2b4;
+
+  --font-display: var(--font-cormorant);
+  --font-wordmark: var(--font-prata);
+  --font-sans: var(--font-be-vietnam);
+  --font-mono: var(--font-plex-mono);
+}
+
+@theme inline {
+  --color-ink: var(--color-ink);
+  --color-paper: var(--color-paper);
+  --color-paper-dim: var(--color-paper-dim);
+  --color-night: var(--color-night);
+  --color-night-soft: var(--color-night-soft);
+  --color-gold-deep: var(--color-gold-deep);
+  --color-gold: var(--color-gold);
+  --color-gold-light: var(--color-gold-light);
+  --color-line: var(--color-line);
+
+  --font-display: var(--font-display);
+  --font-wordmark: var(--font-wordmark);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--color-gold);
+  color: var(--color-night);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.container-page {
+  max-width: 1400px;
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 2.5rem;
+  }
+}
+
+.rule-diamond {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.rule-diamond::before,
+.rule-diamond::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--color-gold-deep);
+  opacity: 0.5;
+}
+
+.text-eyebrow {
+  font-family: var(--font-wordmark);
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  70% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1.9);
+    opacity: 0;
+  }
+}
+
+.hotspot-ring {
+  animation: pulse-ring 2.4s cubic-bezier(0.2, 0.6, 0.4, 1) infinite;
+}
+
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
