@@ -7,6 +7,23 @@ type ChatMessage = { role: "user" | "assistant"; content: string };
 const MAX_MESSAGES = 20;
 const MAX_MESSAGE_LENGTH = 2000;
 
+// In-memory, per-instance rate limit. Not distributed-safe across serverless
+// instances, but it stops casual/scripted abuse from running up API costs.
+const RATE_LIMIT_WINDOW_MS = 60_000;
+const RATE_LIMIT_MAX_REQUESTS = 8;
+const rateBuckets = new Map<string, { count: number; resetAt: number }>();
+
+function isRateLimited(key: string) {
+  const now = Date.now();
+  const bucket = rateBuckets.get(key);
+  if (!bucket || now > bucket.resetAt) {
+    rateBuckets.set(key, { count: 1, resetAt: now + RATE_LIMIT_WINDOW_MS });
+    return false;
+  }
+  bucket.count += 1;
+  return bucket.count > RATE_LIMIT_MAX_REQUESTS;
+}
+
 function buildSystemPrompt() {
   const catalog = products
     .map((p) => `- ${p.name} (${p.category}): ${p.price.toLocaleString("vi-VN")}đ`)
@@ -33,6 +50,33 @@ export async function POST(req: NextRequest) {
           "Chatbot chưa được cấu hình. Vui lòng gọi trực tiếp hoặc để lại thông tin ở mục Liên Hệ.",
       },
       { status: 503 }
+    );
+  }
+
+  // Reject cross-site browser requests (a same-origin request either omits
+  // Origin or sends one matching our own host).
+  const origin = req.headers.get("origin");
+  if (origin) {
+    const originHost = (() => {
+      try {
+        return new URL(origin).host;
+      } catch {
+        return null;
+      }
+    })();
+    if (originHost !== req.headers.get("host")) {
+      return NextResponse.json({ error: "Yêu cầu không hợp lệ." }, { status: 403 });
+    }
+  }
+
+  const clientIp =
+    req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
+    req.headers.get("x-real-ip") ??
+    "unknown";
+  if (isRateLimited(clientIp)) {
+    return NextResponse.json(
+      { error: "Bạn gửi hơi nhanh, vui lòng thử lại sau ít phút." },
+      { status: 429 }
     );
   }
 
