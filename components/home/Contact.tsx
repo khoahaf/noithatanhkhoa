@@ -1,15 +1,40 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { useEffect, useRef, useState, type FormEvent } from "react";
+import { Mail, MapPin, Phone, ShoppingBag } from "lucide-react";
 import { SITE } from "@/constants/site";
+import { cartTotal, useCartStore, type CartItem } from "@/store/cartStore";
+import { formatVND } from "@/lib/utils";
+import { useMounted } from "@/lib/useMounted";
+
+function buildCartMessage(items: CartItem[]) {
+  if (items.length === 0) return "";
+  const lines = items.map((i) => `- ${i.name} x${i.quantity}`);
+  return `Tôi quan tâm các sản phẩm sau, nhờ Anh Khoa tư vấn giúp:\n${lines.join("\n")}`;
+}
 
 export function Contact() {
   const [sent, setSent] = useState(false);
+  const mounted = useMounted();
+  const items = useCartStore((s) => s.items);
+  const clearCart = useCartStore((s) => s.clear);
+  const [message, setMessage] = useState("");
+  const lastAutoMessage = useRef("");
+
+  // Keep the message in sync with the cart, but only while the visitor
+  // hasn't typed something of their own over the auto-generated summary.
+  useEffect(() => {
+    if (!mounted) return;
+    const generated = buildCartMessage(items);
+    const previousAuto = lastAutoMessage.current;
+    lastAutoMessage.current = generated;
+    setMessage((current) => (current === previousAuto ? generated : current));
+  }, [mounted, items]);
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
     setSent(true);
+    clearCart();
   }
 
   return (
@@ -57,6 +82,32 @@ export function Contact() {
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
+              {mounted && items.length > 0 && (
+                <div className="border border-gold/40 bg-paper p-4">
+                  <p className="flex items-center gap-2 text-eyebrow text-[0.62rem] text-gold-deep">
+                    <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.5} />
+                    Sản phẩm trong giỏ ({items.length})
+                  </p>
+                  <ul className="mt-2.5 space-y-1 text-sm text-ink/75">
+                    {items.map((item) => (
+                      <li key={item.slug} className="flex justify-between gap-3">
+                        <span>
+                          {item.name} <span className="text-ink/40">x{item.quantity}</span>
+                        </span>
+                        <span className="shrink-0 font-[family-name:var(--font-mono)] text-xs text-ink/60">
+                          {formatVND(item.price * item.quantity)}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-2.5 flex justify-between border-t border-line/50 pt-2.5 text-sm">
+                    <span className="text-ink/60">Tạm tính</span>
+                    <span className="font-[family-name:var(--font-mono)] text-ink">
+                      {formatVND(cartTotal(items))}
+                    </span>
+                  </div>
+                </div>
+              )}
               <div>
                 <label htmlFor="c-name" className="text-eyebrow text-[0.62rem] text-ink/50">
                   Họ tên
@@ -87,7 +138,9 @@ export function Contact() {
                 </label>
                 <textarea
                   id="c-message"
-                  rows={3}
+                  rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
                   className="mt-2 w-full resize-none border border-ink/15 bg-paper px-3.5 py-2.5 text-sm text-ink placeholder:text-ink/35 focus:border-gold"
                   placeholder="VD: Tư vấn Bộ sưu tập Hoàng Kim Tự Nhiên cho phòng khách 20m²"
                 />

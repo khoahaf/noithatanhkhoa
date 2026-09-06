@@ -2,14 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, ShoppingBag, X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { NAV } from "@/constants/site";
 import { cn } from "@/lib/utils";
+import { cartCount, useCartStore } from "@/store/cartStore";
+import { useMounted } from "@/lib/useMounted";
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const mounted = useMounted();
+  const items = useCartStore((s) => s.items);
+  const openCart = useCartStore((s) => s.open);
+  const count = mounted ? cartCount(items) : 0;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -51,6 +57,19 @@ export function Header() {
           >
             Liên Hệ Ngay
           </Link>
+          <button
+            type="button"
+            onClick={openCart}
+            aria-label="Mở giỏ hàng"
+            className="relative flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
+          >
+            <ShoppingBag className="h-[19px] w-[19px]" strokeWidth={1.5} />
+            {count > 0 && (
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 font-[family-name:var(--font-mono)] text-[0.6rem] leading-none text-night">
+                {count}
+              </span>
+            )}
+          </button>
           <button
             type="button"
             className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"

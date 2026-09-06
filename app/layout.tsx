@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Be_Vietnam_Pro, Cormorant_Garamond, IBM_Plex_Mono, Prata } from "next/font/google";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { CartDrawer } from "@/components/cart/CartDrawer";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 import { SITE } from "@/constants/site";
 import "./globals.css";
 
@@ -48,6 +50,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />
+        <CartDrawer />
+        <ChatWidget />
       </body>
     </html>
   );
