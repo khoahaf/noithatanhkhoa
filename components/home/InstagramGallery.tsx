@@ -12,7 +12,7 @@ const photos = [
 
 export function InstagramGallery() {
   return (
-    <section className="py-16 sm:py-20">
+    <section className="section-y">
       <div className="container-page">
         <div className="rule-diamond mb-3">
           <p className="text-eyebrow shrink-0 text-xs text-gold-deep">

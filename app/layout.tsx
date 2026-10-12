@@ -3,7 +3,8 @@ import { Be_Vietnam_Pro, Cormorant_Garamond, IBM_Plex_Mono, Prata } from "next/f
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { CartDrawer } from "@/components/cart/CartDrawer";
-import { ChatWidget } from "@/components/chat/ChatWidget";
+import { QuickViewDrawer } from "@/components/product/QuickViewDrawer";
+import { FloatingContact } from "@/components/common/FloatingContact";
 import { SITE } from "@/constants/site";
 import "./globals.css";
 
@@ -51,7 +52,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main className="flex-1">{children}</main>
         <Footer />
         <CartDrawer />
-        <ChatWidget />
+        <QuickViewDrawer />
+        <FloatingContact />
       </body>
     </html>
   );

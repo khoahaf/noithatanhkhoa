@@ -5,13 +5,15 @@ export const SITE = {
   description:
     "Nội thất Anh Khoa — sofa, giường, bàn ghế và phụ kiện trang trí cao cấp, kiến tạo không gian sống ấm áp và bền vững theo thời gian.",
   phone: "0909 123 456",
+  // Demo — thay bằng số Zalo thật của showroom.
+  zaloPhone: "0909123456",
   email: "hello@anhkhoa.vn",
   address: "12 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh",
   hours: "8:00 – 20:00, Thứ Hai – Chủ Nhật",
   social: {
     facebook: "https://facebook.com",
     instagram: "https://instagram.com",
-    zalo: "https://zalo.me",
+    zalo: "https://zalo.me/0909123456",
   },
 };
 
@@ -21,3 +23,10 @@ export const NAV = [
   { label: "Câu Chuyện", href: "#cau-chuyen" },
   { label: "Liên Hệ", href: "#lien-he" },
 ];
+
+export const TRUST = [
+  "Gỗ chuẩn xuất khẩu",
+  "May đo theo kích thước riêng",
+  "Miễn phí vận chuyển & lắp đặt nội thành",
+  "Bảo hành kết cấu 3 năm",
+] as const;

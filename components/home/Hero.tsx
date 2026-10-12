@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { ArrowDown, Plus } from "lucide-react";
 import { formatVND, cn } from "@/lib/utils";
 import { img } from "@/lib/images";
 import type { Hotspot } from "@/types";
@@ -84,28 +84,29 @@ export function Hero() {
 
       <div className="container-page relative z-[5] flex h-full flex-col justify-end pb-20 pt-32 sm:pb-24">
         <p className="text-eyebrow text-xs text-gold-light">Nội Thất Anh Khoa</p>
-        <h1 className="mt-5 max-w-xl font-[family-name:var(--font-display)] text-5xl italic leading-[1.08] text-paper sm:text-6xl md:text-7xl">
+        <h1 className="mt-5 max-w-xl font-[family-name:var(--font-display)] text-[2.5rem] italic leading-[1.25] text-paper lg:text-[3rem]">
           Sống an nhiên,
           <br />
           trong từng góc nhỏ.
         </h1>
-        <p className="mt-6 max-w-md text-sm leading-relaxed text-paper/70">
+        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-paper/75">
           Từng đường vân gỗ, từng chi tiết mạ đồng được chọn lựa để kiến tạo
           một không gian sống bạn muốn trở về mỗi ngày.
         </p>
-        <div className="mt-9 flex flex-wrap items-center gap-5">
-          <Link
-            href="#bo-suu-tap"
-            className="flex h-12 items-center bg-gold px-7 text-eyebrow text-xs text-night transition-colors hover:bg-gold-light"
+        <div className="mt-9 flex flex-wrap items-center gap-4">
+          <a
+            href="#lien-he"
+            className="flex h-12 items-center bg-gold px-7 text-eyebrow text-xs text-paper transition-colors hover:bg-gold-deep"
           >
-            Khám Phá Bộ Sưu Tập
-          </Link>
-          <Link
+            Nhận Tư Vấn Không Gian
+          </a>
+          <a
             href="#san-pham"
-            className="text-eyebrow text-xs text-paper/80 underline decoration-gold/30 underline-offset-8 transition-colors hover:text-gold-light"
+            className="flex h-12 items-center gap-2 border border-gold-light/60 px-6 text-eyebrow text-xs text-paper/90 transition-colors hover:border-gold-light hover:text-gold-light"
           >
-            Xem Sản Phẩm Nổi Bật
-          </Link>
+            Khám Phá Sản Phẩm
+            <ArrowDown className="h-3.5 w-3.5" strokeWidth={1.5} />
+          </a>
         </div>
       </div>
     </section>

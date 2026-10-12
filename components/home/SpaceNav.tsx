@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
-import Link from "next/link";
 import { categories } from "@/data/categories";
+import { useCatalogStore } from "@/store/catalogStore";
 
 export function SpaceNav() {
+  const setCategory = useCatalogStore((s) => s.setCategory);
+
   return (
-    <section className="container-page py-16 sm:py-20">
+    <section className="container-page section-y">
       <div className="rule-diamond mb-10">
         <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
           Chọn Không Gian Của Bạn
@@ -12,9 +16,11 @@ export function SpaceNav() {
       </div>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">
         {categories.map((c) => (
-          <Link
+          // Cuộn xuống catalog và bật sẵn bộ lọc đúng nhóm.
+          <a
             key={c.slug}
             href="#san-pham"
+            onClick={() => setCategory(c.slug)}
             className="group relative flex aspect-[3/4] items-end overflow-hidden bg-night"
           >
             <Image
@@ -33,7 +39,7 @@ export function SpaceNav() {
                 {c.tagline}
               </p>
             </div>
-          </Link>
+          </a>
         ))}
       </div>
     </section>

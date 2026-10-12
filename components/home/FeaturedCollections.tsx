@@ -4,7 +4,7 @@ import { collections } from "@/data/collections";
 export function FeaturedCollections() {
   const [wide, ...rest] = collections;
   return (
-    <section id="bo-suu-tap" className="scroll-mt-20 bg-paper-dim py-16 sm:py-20">
+    <section id="bo-suu-tap" className="scroll-mt-20 bg-paper-dim section-y">
       <div className="container-page">
         <div className="rule-diamond mb-10">
           <p className="text-eyebrow shrink-0 text-xs text-gold-deep">

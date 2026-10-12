@@ -20,7 +20,7 @@ const pillars = [
 
 export function Philosophy() {
   return (
-    <section id="cau-chuyen" className="scroll-mt-20 bg-night py-20 text-paper sm:py-24">
+    <section id="cau-chuyen" className="scroll-mt-20 section-y bg-night text-paper">
       <div className="container-page">
         <div className="mx-auto max-w-lg text-center">
           <p className="text-eyebrow text-xs text-gold-light">Triết Lý Anh Khoa</p>

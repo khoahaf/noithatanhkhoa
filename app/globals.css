@@ -1,15 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --color-ink: #17150f;
-  --color-paper: #f7f2e7;
-  --color-paper-dim: #eee5d0;
-  --color-night: #0e0d0b;
-  --color-night-soft: #1b1913;
-  --color-gold-deep: #8a6a2f;
-  --color-gold: #c9a227;
-  --color-gold-light: #e7cd86;
-  --color-line: #ddd2b4;
+  /* Warm Alabaster canvas + charcoal ink instead of pure white/black,
+     smoked-brass accent (#9E7D47) with a darker teak tone for small text. */
+  --color-ink: #2a2723;
+  --color-paper: #f9f8f5;
+  --color-paper-dim: #f0ebe1;
+  --color-night: #1f2421;
+  --color-night-soft: #2b302c;
+  --color-gold-deep: #8c6d46;
+  --color-gold: #9e7d47;
+  --color-gold-light: #d9c29a;
+  --color-line: #e2d9c8;
 
   --font-display: var(--font-cormorant);
   --font-wordmark: var(--font-prata);
@@ -46,6 +48,7 @@ body {
   background: var(--color-paper);
   color: var(--color-ink);
   font-family: var(--font-sans);
+  line-height: 1.6;
 }
 
 ::selection {
@@ -78,6 +81,16 @@ body {
 @media (min-width: 768px) {
   .container-page {
     padding-inline: 2.5rem;
+  }
+}
+
+.section-y {
+  padding-block: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .section-y {
+    padding-block: 7rem;
   }
 }
 

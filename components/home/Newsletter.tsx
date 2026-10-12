@@ -13,7 +13,7 @@ export function Newsletter() {
   }
 
   return (
-    <section className="bg-paper-dim py-16 sm:py-20">
+    <section className="bg-paper-dim section-y">
       <div className="container-page flex flex-col items-center text-center">
         <p className="text-eyebrow text-xs text-gold-deep">Đừng Bỏ Lỡ</p>
         <p className="mt-4 max-w-md font-[family-name:var(--font-display)] text-2xl italic text-ink sm:text-3xl">

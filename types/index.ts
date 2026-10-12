@@ -14,7 +14,11 @@ export type Product = {
   image: string;
   gallery: string[];
   material: string;
+  /** Nhãn chất liệu ngắn hiển thị trên card, vd "Gỗ Sồi · Nhung Ý". */
+  tag: string;
   dimensions: string;
+  /** Dài × Sâu × Cao (cm) — dùng cho thông số mm và hình minh hoạ tỷ lệ. */
+  size?: { w: number; d: number; h: number };
   description: string;
   isNew?: boolean;
   featured?: boolean;

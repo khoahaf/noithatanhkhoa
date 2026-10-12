@@ -38,7 +38,7 @@ export function Contact() {
   }
 
   return (
-    <section id="lien-he" className="scroll-mt-20 py-16 sm:py-20">
+    <section id="lien-he" className="scroll-mt-20 section-y">
       <div className="container-page grid gap-14 md:grid-cols-2">
         <div>
           <p className="text-eyebrow text-xs text-gold-deep">Liên Hệ</p>

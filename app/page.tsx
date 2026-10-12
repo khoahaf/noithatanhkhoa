@@ -1,6 +1,7 @@
 import { Hero } from "@/components/home/Hero";
 import { SpaceNav } from "@/components/home/SpaceNav";
-import { NewArrivals } from "@/components/home/NewArrivals";
+import { TrustBar } from "@/components/home/TrustBar";
+import { ProductCatalog } from "@/components/home/ProductCatalog";
 import { FeaturedCollections } from "@/components/home/FeaturedCollections";
 import { Philosophy } from "@/components/home/Philosophy";
 import { InstagramGallery } from "@/components/home/InstagramGallery";
@@ -11,8 +12,9 @@ export default function Home() {
   return (
     <>
       <Hero />
+      <TrustBar />
       <SpaceNav />
-      <NewArrivals />
+      <ProductCatalog />
       <FeaturedCollections />
       <Philosophy />
       <InstagramGallery />

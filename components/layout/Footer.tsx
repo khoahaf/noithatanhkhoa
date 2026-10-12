@@ -49,7 +49,7 @@ export function Footer() {
           <p className="text-eyebrow text-[0.68rem] text-gold-light">Chính Sách</p>
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             <li>Vận chuyển &amp; lắp đặt</li>
-            <li>Bảo hành 5 năm</li>
+            <li>Bảo hành kết cấu 3 năm</li>
             <li>Đổi trả trong 15 ngày</li>
             <li>Chăm sóc chất liệu</li>
           </ul>
