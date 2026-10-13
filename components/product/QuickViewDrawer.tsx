@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useRef, useState } from "react";
 import { Check, Heart, MessageCircle, X } from "lucide-react";
 import { getProduct } from "@/data/products";
-import { cn, formatMillions, formatSizeMM } from "@/lib/utils";
+import { PRICE_NOTE, PRODUCT_TAG } from "@/constants/site";
+import { cn, formatSizeMM } from "@/lib/utils";
 import { openZaloWithMessage, quoteMessage } from "@/lib/zalo";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useCartStore } from "@/store/cartStore";
@@ -48,7 +49,7 @@ export function QuickViewDrawer() {
             type="button"
             onClick={close}
             aria-label="Đóng"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
           >
             <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </button>
@@ -104,28 +105,34 @@ function QuickViewBody({ product }: { product: Product }) {
         )}
 
         <div className="px-6 pb-8 pt-6">
-          <p className="text-eyebrow text-xs text-gold-deep">{product.tag}</p>
+          <p className="text-eyebrow text-xs text-gold-deep">
+            {product.tag} · {PRODUCT_TAG}
+          </p>
           <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl leading-tight text-ink">
             {product.name}
           </h2>
           <p className="mt-3 text-[15px] leading-relaxed text-ink/70">{product.description}</p>
 
           <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
+            {product.features && (
+              <div className="flex justify-between gap-4 py-3">
+                <dt className="shrink-0 text-ink/55">Đặc tính</dt>
+                <dd className="text-right text-ink">{product.features}</dd>
+              </div>
+            )}
             <div className="flex justify-between gap-4 py-3">
               <dt className="text-ink/55">Chất liệu</dt>
               <dd className="text-right text-ink">{product.material}</dd>
             </div>
             <div className="flex justify-between gap-4 py-3">
-              <dt className="text-ink/55">Kích thước (D × S × C)</dt>
+              <dt className="text-ink/55">Kích thước mẫu (D x S x C)</dt>
               <dd className="text-right font-[family-name:var(--font-mono)] text-[13px] text-ink">
                 {dims}
               </dd>
             </div>
             <div className="flex justify-between gap-4 py-3">
-              <dt className="text-ink/55">Giá tham khảo từ</dt>
-              <dd className="font-[family-name:var(--font-mono)] text-ink">
-                {formatMillions(product.price)}
-              </dd>
+              <dt className="text-ink/55">Giá tham khảo theo kích thước mẫu</dt>
+              <dd className="text-right font-medium text-gold-deep">{PRICE_NOTE}</dd>
             </div>
           </dl>
 

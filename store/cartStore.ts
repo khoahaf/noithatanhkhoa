@@ -14,7 +14,8 @@ export type CartItem = {
 type CartState = {
   items: CartItem[];
   isOpen: boolean;
-  addItem: (item: Omit<CartItem, "quantity">, quantity?: number) => void;
+  /** `open: false` thêm vào danh sách mà không bật ngăn kéo (dùng cho nút báo giá trên card). */
+  addItem: (item: Omit<CartItem, "quantity">, quantity?: number, open?: boolean) => void;
   removeItem: (slug: string) => void;
   updateQuantity: (slug: string, quantity: number) => void;
   clear: () => void;
@@ -28,17 +29,20 @@ export const useCartStore = create<CartState>()(
     (set) => ({
       items: [],
       isOpen: false,
-      addItem: (item, quantity = 1) =>
+      addItem: (item, quantity = 1, open = true) =>
         set((state) => {
           const existing = state.items.find((i) => i.slug === item.slug);
+          // Báo giá lại cùng một mẫu thì giữ nguyên, không cộng dồn số lượng.
           const items = existing
-            ? state.items.map((i) =>
-                i.slug === item.slug
-                  ? { ...i, quantity: i.quantity + quantity }
-                  : i
-              )
+            ? open
+              ? state.items.map((i) =>
+                  i.slug === item.slug
+                    ? { ...i, quantity: i.quantity + quantity }
+                    : i
+                )
+              : state.items
             : [...state.items, { ...item, quantity }];
-          return { items, isOpen: true };
+          return { items, isOpen: open };
         }),
       removeItem: (slug) =>
         set((state) => ({ items: state.items.filter((i) => i.slug !== slug) })),

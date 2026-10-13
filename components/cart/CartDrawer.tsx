@@ -3,9 +3,8 @@
 import Image from "next/image";
 import { useRef } from "react";
 import { Heart, Minus, Plus, Trash2, X } from "lucide-react";
-import { CTA_CONSULT } from "@/constants/site";
-import { cartTotal, useCartStore } from "@/store/cartStore";
-import { formatMillions } from "@/lib/utils";
+import { PRICE_NOTE } from "@/constants/site";
+import { useCartStore } from "@/store/cartStore";
 import { useMounted } from "@/lib/useMounted";
 import { useDialog } from "@/lib/useDialog";
 
@@ -50,7 +49,7 @@ export function CartDrawer() {
             type="button"
             onClick={close}
             aria-label="Đóng danh sách quan tâm"
-            className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
           >
             <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </button>
@@ -94,7 +93,7 @@ export function CartDrawer() {
                           type="button"
                           onClick={() => removeItem(item.slug)}
                           aria-label={`Bỏ ${item.name} khỏi danh sách`}
-                          className="shrink-0 text-ink/35 hover:text-ink"
+                          className="-m-3 shrink-0 p-3 text-ink/35 hover:text-ink"
                         >
                           <Trash2 className="h-4 w-4" strokeWidth={1.5} />
                         </button>
@@ -105,7 +104,7 @@ export function CartDrawer() {
                             type="button"
                             onClick={() => updateQuantity(item.slug, item.quantity - 1)}
                             aria-label="Giảm số lượng"
-                            className="flex h-8 w-8 items-center justify-center text-ink/70 hover:text-gold-deep"
+                            className="flex h-11 w-11 items-center justify-center text-ink/70 hover:text-gold-deep"
                           >
                             <Minus className="h-3 w-3" strokeWidth={1.5} />
                           </button>
@@ -116,17 +115,12 @@ export function CartDrawer() {
                             type="button"
                             onClick={() => updateQuantity(item.slug, item.quantity + 1)}
                             aria-label="Tăng số lượng"
-                            className="flex h-8 w-8 items-center justify-center text-ink/70 hover:text-gold-deep"
+                            className="flex h-11 w-11 items-center justify-center text-ink/70 hover:text-gold-deep"
                           >
                             <Plus className="h-3 w-3" strokeWidth={1.5} />
                           </button>
                         </div>
-                        <span className="text-xs text-ink/55">
-                          từ{" "}
-                          <span className="font-[family-name:var(--font-mono)] text-sm text-gold-deep">
-                            {formatMillions(item.price * item.quantity)}
-                          </span>
-                        </span>
+                        <span className="text-xs text-gold-deep">{PRICE_NOTE}</span>
                       </div>
                     </div>
                   </li>
@@ -135,21 +129,15 @@ export function CartDrawer() {
             </div>
 
             <div className="shrink-0 border-t border-line/60 px-6 py-5">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-ink/60">Tổng tham khảo từ</span>
-                <span className="font-[family-name:var(--font-mono)] text-base text-ink">
-                  {formatMillions(cartTotal(items))}
-                </span>
-              </div>
-              <p className="mt-1.5 text-xs leading-relaxed text-ink/55">
-                Báo giá chính xác sau khi Anh Khoa đo đạc và chốt chất liệu cùng bạn.
+              <p className="text-sm leading-relaxed text-ink/60">
+                Báo giá theo kích thước căn hộ của bạn, sau khi đo đạc và chốt chất liệu.
               </p>
               <a
                 href="#lien-he"
                 onClick={close}
                 className="mt-4 flex h-12 w-full items-center justify-center bg-night text-eyebrow text-xs text-gold-light transition-colors hover:bg-night-soft"
               >
-                {CTA_CONSULT} Cho Danh Sách Này
+                Nhận Báo Giá Cho Danh Sách Này
               </a>
             </div>
           </>

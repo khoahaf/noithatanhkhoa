@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Heart, Menu, X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
-import { CTA_CONSULT, NAV } from "@/constants/site";
+import { CTA, NAV } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import { cartCount, useCartStore } from "@/store/cartStore";
 import { useMounted } from "@/lib/useMounted";
@@ -34,7 +34,7 @@ export function Header() {
       )}
     >
       <div className="container-page flex h-20 items-center justify-between">
-        <Link href="/" aria-label="Về đầu trang Anh Khoa" onClick={() => setMenuOpen(false)}>
+        <Link href="/" aria-label="Về đầu trang Anh Khoa" onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center">
           <Logo tone="ink" />
         </Link>
 
@@ -50,18 +50,18 @@ export function Header() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-1 sm:gap-4">
           <Link
             href="#lien-he"
-            className="hidden h-10 items-center border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper md:flex"
+            className="hidden h-11 items-center border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper md:flex"
           >
-            {CTA_CONSULT}
+            {CTA.header}
           </Link>
           <button
             type="button"
             onClick={openCart}
             aria-label={count > 0 ? `Danh sách quan tâm (${count} mẫu)` : "Danh sách quan tâm"}
-            className="relative flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
+            className="relative flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
           >
             <Heart className="h-[19px] w-[19px]" strokeWidth={1.5} />
             {count > 0 && (
@@ -72,7 +72,7 @@ export function Header() {
           </button>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"
             aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -104,7 +104,7 @@ export function Header() {
               onClick={() => setMenuOpen(false)}
               className="mt-4 flex h-12 items-center justify-center bg-gold text-eyebrow text-xs text-paper"
             >
-              {CTA_CONSULT}
+              {CTA.header}
             </a>
           </div>
         </nav>

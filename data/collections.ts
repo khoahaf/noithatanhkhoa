@@ -39,7 +39,7 @@ export const collections: Collection[] = [
     heroImage: img.livingRoomLeather,
     productSlugs: [
       "sofa-hoang-hon",
-      "sofa-lua-vang",
+      "sofa-vang-an-yen",
       "giuong-dem-vang",
       "ban-tra-da-cam-thach",
     ],

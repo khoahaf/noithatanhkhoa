@@ -31,8 +31,26 @@ export const SITE = {
 export const PHONE_HREF = `tel:${SITE.phone.replace(/\s/g, "")}`;
 export const ZALO_URL = `https://zalo.me/${SITE.zaloPhone}`;
 
-/** Tên gọi thống nhất cho mọi nút dẫn tới tư vấn. */
-export const CTA_CONSULT = "Nhận Tư Vấn";
+/** Nhãn nút theo đặc tả nội dung bán hàng. */
+export const CTA = {
+  header: "Tư Vấn Không Gian",
+  heroPrimary: "Nhận Tư Vấn Kích Thước",
+  heroSecondary: "Khám Phá Bộ Sưu Tập",
+  productQuote: "Nhận Báo Giá Mẫu Này",
+  formSubmit: "Gửi Yêu Cầu Tư Vấn Ngay",
+} as const;
+
+/** Hàng may đo: không niêm yết giá cứng. */
+export const PRICE_NOTE = "Liên hệ tư vấn";
+export const PRODUCT_TAG = "May đo theo kích thước riêng";
+
+export const FOOTER_BRAND =
+  "Nội Thất Anh Khoa - Xưởng chế tác và giải pháp nội thất may đo theo không gian căn hộ.";
+export const FOOTER_COMMITMENTS = [
+  "Khảo sát tận nơi miễn phí",
+  "Tùy chỉnh kích thước theo yêu cầu",
+  "Bảo hành kết cấu 03 năm",
+] as const;
 
 export const NAV = [
   { label: "Sản Phẩm", href: "#san-pham" },
@@ -42,8 +60,8 @@ export const NAV = [
 ];
 
 export const TRUST = [
-  "Gỗ chuẩn xuất khẩu",
-  "May đo theo kích thước riêng",
-  "Miễn phí vận chuyển & lắp đặt nội thành",
-  "Bảo hành kết cấu 3 năm",
+  { title: "May Đo Vừa Vặn", body: "Tùy chỉnh kích thước chuẩn xác theo từng căn hộ." },
+  { title: "Vật Liệu Tuyển Chọn", body: "Cốt gỗ sấy hạn chế cong vênh, sơn an toàn sức khỏe." },
+  { title: "Khảo Sát Tận Nhà", body: "Hỗ trợ đo đạc hiện trạng và ướm mẫu vật liệu miễn phí." },
+  { title: "Bảo Hành 03 Năm", body: "Bảo hành kết cấu khung mộc, hỗ trợ bảo trì đồng hành." },
 ] as const;

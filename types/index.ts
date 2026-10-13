@@ -14,6 +14,8 @@ export type Product = {
   image: string;
   gallery: string[];
   material: string;
+  /** Đặc tính công năng hiển thị trên card; không có thì dùng `material`. */
+  features?: string;
   /** Nhãn chất liệu ngắn hiển thị trên card, vd "Gỗ Sồi · Nhung Ý". */
   tag: string;
   dimensions: string;

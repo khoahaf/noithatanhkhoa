@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import type { Product } from "@/types";
-import { cn, formatMillions, formatSizeMM } from "@/lib/utils";
+import { CTA, PRICE_NOTE, PRODUCT_TAG } from "@/constants/site";
+import { cn, formatSizeMM } from "@/lib/utils";
 import { useCatalogStore } from "@/store/catalogStore";
+import { useCartStore } from "@/store/cartStore";
 
 export function ProductCard({
   product,
@@ -13,8 +15,10 @@ export function ProductCard({
   className?: string;
 }) {
   const openQuickView = useCatalogStore((s) => s.openQuickView);
+  const addItem = useCartStore((s) => s.addItem);
   const altImage = product.gallery.find((g) => g !== product.image);
   const open = () => openQuickView(product.slug);
+  const dims = product.size ? formatSizeMM(product.size) : product.dimensions;
 
   return (
     <div className={cn("group flex flex-col", className)}>
@@ -54,30 +58,46 @@ export function ProductCard({
         </span>
       </button>
 
-      <p className="mt-4 text-xs font-medium uppercase tracking-[0.12em] text-gold-deep">{product.tag}</p>
-      <button type="button" onClick={open} className="mt-1.5 text-left">
+      <p className="mt-4 self-start text-balance border border-gold/40 px-2 py-0.5 text-xs leading-snug text-gold-deep">
+        {PRODUCT_TAG}
+      </p>
+      <button type="button" onClick={open} className="min-h-11 py-2 text-left">
         <span className="text-[15px] font-semibold leading-snug text-ink transition-colors hover:text-gold-deep">
           {product.name}
         </span>
       </button>
-      {product.size && (
-        <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-ink/60">
-          {formatSizeMM(product.size)}
-        </p>
-      )}
-      <p className="mt-2 text-sm text-ink/60">
-        Giá tham khảo từ{" "}
-        <span className="whitespace-nowrap font-[family-name:var(--font-mono)] text-sm text-ink">
-          {formatMillions(product.price)}
-        </span>
+      <p className="text-xs leading-relaxed text-ink/60">
+        Kích thước mẫu:{" "}
+        <span className="font-[family-name:var(--font-mono)] text-ink/80 min-[360px]:whitespace-nowrap">{dims}</span>
+        {product.size && (
+          <>
+            {" "}
+            <span className="whitespace-nowrap">(D x S x C)</span>
+          </>
+        )}
       </p>
-      <button
-        type="button"
-        onClick={open}
-        className="mt-3 min-h-9 w-full border border-gold px-3 py-2 text-[13px] font-medium leading-snug text-gold-deep sm:w-auto sm:self-start transition-colors hover:bg-gold hover:text-paper"
+      <p className="mt-1.5 line-clamp-3 text-[13px] leading-relaxed text-ink/70 sm:text-sm">
+        {product.features ?? product.material}
+      </p>
+      <p className="mt-2 text-balance text-[13px] leading-snug text-ink/60 sm:text-sm">
+        Giá tham khảo theo kích thước mẫu:{" "}
+        <span className="whitespace-nowrap font-medium text-gold-deep">{PRICE_NOTE}</span>
+      </p>
+      <div className="min-h-3 flex-1" />
+      {/* Thêm mẫu vào danh sách (form Liên Hệ tự điền tên mẫu) rồi cuộn tới form. */}
+      <a
+        href="#lien-he"
+        onClick={() =>
+          addItem(
+            { slug: product.slug, name: product.name, price: product.price, image: product.image },
+            1,
+            false
+          )
+        }
+        className="mt-auto flex min-h-11 w-full items-center justify-center whitespace-nowrap border border-gold px-1 py-2 text-center text-xs font-medium leading-snug sm:px-3 sm:text-[13px] text-gold-deep transition-colors hover:bg-gold hover:text-paper sm:w-auto sm:self-start"
       >
-        Xem chi tiết &amp; kích thước
-      </button>
+        {CTA.productQuote}
+      </a>
     </div>
   );
 }

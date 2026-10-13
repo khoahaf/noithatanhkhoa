@@ -3,9 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import { ArrowDown, Plus } from "lucide-react";
-import { CTA_CONSULT } from "@/constants/site";
+import { CTA, PRICE_NOTE } from "@/constants/site";
 import { getProduct } from "@/data/products";
-import { formatMillions, cn } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import { img } from "@/lib/images";
 import { useCatalogStore } from "@/store/catalogStore";
 import type { Hotspot } from "@/types";
@@ -65,10 +65,7 @@ export function Hero() {
               <p className="font-[family-name:var(--font-display)] text-lg text-paper">{h.label}</p>
               {product && (
                 <p className="mt-1 text-sm text-paper/60">
-                  Giá tham khảo từ{" "}
-                  <span className="font-[family-name:var(--font-mono)] text-gold-light">
-                    {formatMillions(product.price)}
-                  </span>
+                  Giá tham khảo: <span className="text-gold-light">{PRICE_NOTE}</span>
                 </p>
               )}
               {product ? (
@@ -100,23 +97,23 @@ export function Hero() {
           <br />
           trong từng góc nhỏ.
         </h1>
-        <p className="mt-6 max-w-md text-[15px] leading-relaxed text-paper/75">
-          Từng đường vân gỗ, từng chi tiết mạ đồng được chọn lựa để kiến tạo
-          một không gian sống bạn muốn trở về mỗi ngày.
+        <p className="mt-6 max-w-lg text-[15px] leading-relaxed text-paper/80">
+          Từng đường vân gỗ và chi tiết mạ đồng được chế tác để kiến tạo chốn về
+          an yên. Thiết kế tinh giản, may đo chuẩn xác cho từng mét vuông căn hộ của bạn.
         </p>
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
             href="#lien-he"
             className="flex h-12 items-center bg-gold px-7 text-eyebrow text-xs text-paper transition-colors hover:bg-gold-deep"
           >
-            {CTA_CONSULT} Không Gian
+            {CTA.heroPrimary}
           </a>
           <a
-            href="#san-pham"
+            href="#bo-suu-tap"
             className="flex h-12 items-center gap-2 border border-gold-light/60 px-6 text-eyebrow text-xs text-paper/90 transition-colors hover:border-gold-light hover:text-gold-light"
           >
-            Khám Phá Sản Phẩm
-            <ArrowDown className="h-3.5 w-3.5" strokeWidth={1.5} />
+            {CTA.heroSecondary}
+            <ArrowDown aria-hidden="true" className="h-3.5 w-3.5" strokeWidth={1.5} />
           </a>
         </div>
       </div>

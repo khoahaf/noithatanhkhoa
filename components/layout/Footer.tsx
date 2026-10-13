@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Camera, MessageCircle, Share2 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
-import { NAV, PHONE_HREF, SITE, ZALO_URL } from "@/constants/site";
+import { FOOTER_BRAND, FOOTER_COMMITMENTS, NAV, PHONE_HREF, SITE, ZALO_URL } from "@/constants/site";
 
 export function Footer() {
   return (
@@ -10,7 +10,7 @@ export function Footer() {
         <div>
           <Logo tone="gold" />
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-paper/60">
-            {SITE.description}
+            {FOOTER_BRAND}
           </p>
           <div className="mt-6 flex gap-3">
             {[
@@ -27,7 +27,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={label}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-gold/30 text-gold-light transition-colors hover:border-gold hover:bg-gold/10"
+                className="flex h-11 w-11 items-center justify-center rounded-full border border-gold/30 text-gold-light transition-colors hover:border-gold hover:bg-gold/10"
               >
                 <Icon className="h-4 w-4" strokeWidth={1.5} />
               </a>
@@ -37,10 +37,10 @@ export function Footer() {
 
         <div>
           <p className="text-eyebrow text-xs text-gold-light">Khám Phá</p>
-          <ul className="mt-4 space-y-3 text-sm text-paper/70">
+          <ul className="mt-4 space-y-0 text-sm text-paper/70">
             {NAV.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-gold-light">
+                <Link href={item.href} className="inline-block py-3 transition-colors hover:text-gold-light">
                   {item.label}
                 </Link>
               </li>
@@ -52,7 +52,7 @@ export function Footer() {
           <p className="text-eyebrow text-xs text-gold-light">Chính Sách</p>
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             <li>Vận chuyển &amp; lắp đặt</li>
-            <li>Bảo hành kết cấu 3 năm</li>
+            <li>Bảo hành kết cấu 03 năm</li>
             <li>Đổi trả trong 15 ngày</li>
             <li>Chăm sóc chất liệu</li>
           </ul>
@@ -60,21 +60,27 @@ export function Footer() {
 
         <div>
           <p className="text-eyebrow text-xs text-gold-light">Ghé Thăm Showroom</p>
-          <ul className="mt-4 space-y-3 text-sm text-paper/70">
+          <ul className="mt-4 space-y-1 text-sm text-paper/70">
             <li>{SITE.address}</li>
             <li>{SITE.hours}</li>
             <li>
-              <a href={PHONE_HREF} className="transition-colors hover:text-gold-light">
+              <a href={PHONE_HREF} className="inline-block py-3 transition-colors hover:text-gold-light">
                 {SITE.phone}
               </a>
             </li>
             <li>
-              <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-gold-light">
+              <a href={`mailto:${SITE.email}`} className="inline-block py-3 transition-colors hover:text-gold-light">
                 {SITE.email}
               </a>
             </li>
           </ul>
         </div>
+      </div>
+
+      <div className="border-t border-gold/15">
+        <p className="container-page py-5 text-center text-sm text-gold-light/90">
+          {FOOTER_COMMITMENTS.join(" • ")}
+        </p>
       </div>
 
       <div className="border-t border-gold/15">

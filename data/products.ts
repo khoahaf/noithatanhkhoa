@@ -3,18 +3,20 @@ import type { Product } from "@/types";
 
 export const products: Product[] = [
   {
-    slug: "sofa-lua-vang",
-    name: "Sofa Lụa Vàng 3 Chỗ",
+    slug: "sofa-vang-an-yen",
+    name: "Sofa Văng An Yên",
     category: "sofa",
     price: 68500000,
     image: img.sofaXanhNhung,
     gallery: [img.sofaXanhNhung, img.livingRoomGreen, img.loftLamp],
-    material: "Khung gỗ sồi tự nhiên, bọc nhung cao cấp",
-    tag: "Gỗ Sồi · Nhung",
-    size: { w: 210, d: 90, h: 80 },
-    dimensions: "210 × 90 × 80 cm",
+    material: "Đệm mút D40, vỏ bọc tháo giặt, chân mạ đồng",
+    features:
+      "Đệm mút D40 chống lún xẹp, vỏ bọc tháo giặt linh hoạt, chân mạ đồng cao 15cm.",
+    tag: "Mút D40 · Chân Mạ Đồng",
+    size: { w: 200, d: 85, h: 80 },
+    dimensions: "200 × 85 × 80 cm",
     description:
-      "Đường cong mềm mại và lớp nhung ánh lụa tạo điểm nhấn sang trọng cho phòng khách, vẫn giữ được sự ấm áp gần gũi trong từng đường chỉ may thủ công.",
+      "Dáng văng tinh giản cho phòng khách căn hộ, đệm ngồi nâng đỡ êm ái và chân cao thoáng gầm, dễ vệ sinh hằng ngày.",
     featured: true,
   },
   {
@@ -122,7 +124,7 @@ export const products: Product[] = [
   {
     slug: "ban-an-go-soi",
     name: "Bàn Ăn Gỗ Sồi Tự Nhiên",
-    category: "ban",
+    category: "ghe-an",
     price: 32900000,
     image: img.diningScene,
     gallery: [img.diningScene, img.banAnSang],

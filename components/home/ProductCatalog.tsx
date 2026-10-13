@@ -27,7 +27,7 @@ export function ProductCatalog() {
     <section id="san-pham" className="section-y scroll-mt-20">
       <div className="container-page">
         <div className="rule-diamond mb-8">
-          <p className="text-eyebrow shrink-0 text-xs text-gold-deep">Sản Phẩm</p>
+          <h2 className="text-eyebrow shrink-0 text-xs text-gold-deep">Sản Phẩm Tiêu Biểu</h2>
         </div>
 
         <div
@@ -66,7 +66,7 @@ export function ProductCatalog() {
               <button
                 type="button"
                 onClick={() => setCollection(null)}
-                className="inline-flex items-center gap-1 border border-line px-2.5 py-1 text-ink/70 hover:border-gold hover:text-gold-deep"
+                className="inline-flex min-h-11 items-center gap-1 border border-line px-3 text-ink/70 hover:border-gold hover:text-gold-deep"
               >
                 <X className="h-3.5 w-3.5" strokeWidth={1.5} />
                 Bỏ lọc

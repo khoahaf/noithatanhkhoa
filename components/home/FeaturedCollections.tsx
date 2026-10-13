@@ -8,7 +8,7 @@ import { useCatalogStore } from "@/store/catalogStore";
 export function FeaturedCollections() {
   const [wide, ...rest] = collections;
   return (
-    <section id="bo-suu-tap" className="section-y scroll-mt-20 bg-paper-dim">
+    <section id="bo-suu-tap-noi-bat" className="section-y scroll-mt-20 bg-paper-dim">
       <div className="container-page">
         <div className="rule-diamond mb-10">
           <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
