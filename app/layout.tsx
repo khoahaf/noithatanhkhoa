@@ -6,6 +6,7 @@ import { CartDrawer } from "@/components/cart/CartDrawer";
 import { QuickViewDrawer } from "@/components/product/QuickViewDrawer";
 import { FloatingContact } from "@/components/common/FloatingContact";
 import { SITE } from "@/constants/site";
+import { img } from "@/lib/images";
 import "./globals.css";
 
 const cormorant = Cormorant_Garamond({
@@ -39,6 +40,24 @@ export const metadata: Metadata = {
     template: `%s | ${SITE.name}`,
   },
   description: SITE.description,
+  metadataBase: new URL(SITE.url),
+  // Ảnh + mô tả khi khách chia sẻ link qua Zalo / Facebook / Messenger.
+  openGraph: {
+    type: "website",
+    locale: "vi_VN",
+    siteName: SITE.fullName,
+    title: `${SITE.fullName} | ${SITE.tagline}`,
+    description: SITE.description,
+    images: [
+      {
+        url: img.heroLivingRoom.replace("w=1600", "w=1200&h=630"),
+        width: 1200,
+        height: 630,
+        alt: "Phòng khách với armchair vàng — Nội Thất Anh Khoa",
+      },
+    ],
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

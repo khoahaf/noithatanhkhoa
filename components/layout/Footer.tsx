@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { Camera, MessageCircle, Share2 } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
-import { NAV, SITE } from "@/constants/site";
+import { NAV, PHONE_HREF, SITE, ZALO_URL } from "@/constants/site";
 
 export function Footer() {
   return (
@@ -16,8 +16,11 @@ export function Footer() {
             {[
               { Icon: Share2, href: SITE.social.facebook, label: "Facebook" },
               { Icon: Camera, href: SITE.social.instagram, label: "Instagram" },
-              { Icon: MessageCircle, href: SITE.social.zalo, label: "Zalo" },
-            ].map(({ Icon, href, label }) => (
+              { Icon: MessageCircle, href: ZALO_URL, label: "Zalo" },
+            ]
+              // Chưa có trang thật thì ẩn, không trỏ về trang chủ Facebook/Instagram chung.
+              .filter((s) => s.href)
+              .map(({ Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
@@ -33,7 +36,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-eyebrow text-[0.68rem] text-gold-light">Khám Phá</p>
+          <p className="text-eyebrow text-xs text-gold-light">Khám Phá</p>
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             {NAV.map((item) => (
               <li key={item.href}>
@@ -46,7 +49,7 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-eyebrow text-[0.68rem] text-gold-light">Chính Sách</p>
+          <p className="text-eyebrow text-xs text-gold-light">Chính Sách</p>
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             <li>Vận chuyển &amp; lắp đặt</li>
             <li>Bảo hành kết cấu 3 năm</li>
@@ -56,12 +59,20 @@ export function Footer() {
         </div>
 
         <div>
-          <p className="text-eyebrow text-[0.68rem] text-gold-light">Ghé Thăm Showroom</p>
+          <p className="text-eyebrow text-xs text-gold-light">Ghé Thăm Showroom</p>
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             <li>{SITE.address}</li>
             <li>{SITE.hours}</li>
-            <li>{SITE.phone}</li>
-            <li>{SITE.email}</li>
+            <li>
+              <a href={PHONE_HREF} className="transition-colors hover:text-gold-light">
+                {SITE.phone}
+              </a>
+            </li>
+            <li>
+              <a href={`mailto:${SITE.email}`} className="transition-colors hover:text-gold-light">
+                {SITE.email}
+              </a>
+            </li>
           </ul>
         </div>
       </div>
@@ -69,7 +80,7 @@ export function Footer() {
       <div className="border-t border-gold/15">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-paper/40 md:flex-row">
           <p>&copy; {new Date().getFullYear()} {SITE.fullName}. Đã đăng ký bản quyền.</p>
-          <p className="text-eyebrow text-[0.6rem]">{SITE.tagline}</p>
+          <p className="text-eyebrow text-xs">{SITE.tagline}</p>
         </div>
       </div>
     </footer>

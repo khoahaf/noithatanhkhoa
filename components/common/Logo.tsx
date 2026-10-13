@@ -53,7 +53,7 @@ export function Logo({
         >
           ANH KHOA
         </span>
-        <span className="mt-1 text-[0.55rem] tracking-[0.24em] text-current opacity-70 uppercase">
+        <span className="mt-1 whitespace-nowrap text-xs tracking-[0.04em] text-current opacity-70 uppercase">
           Kiến tạo không gian sống
         </span>
       </span>

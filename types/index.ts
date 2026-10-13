@@ -37,6 +37,8 @@ export type Hotspot = {
   top: string;
   left: string;
   label: string;
-  price?: number;
-  href: string;
+  /** Mở Quick View của sản phẩm này. */
+  productSlug?: string;
+  /** Hoặc lọc catalog theo bộ sưu tập này. */
+  collectionSlug?: string;
 };

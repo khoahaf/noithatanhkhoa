@@ -1,14 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import { Check, MessageCircle, ShoppingBag, X } from "lucide-react";
+import { useRef, useState } from "react";
+import { Check, Heart, MessageCircle, X } from "lucide-react";
 import { getProduct } from "@/data/products";
 import { cn, formatMillions, formatSizeMM } from "@/lib/utils";
 import { openZaloWithMessage, quoteMessage } from "@/lib/zalo";
 import { useCatalogStore } from "@/store/catalogStore";
 import { useCartStore } from "@/store/cartStore";
 import type { Product } from "@/types";
+import { useDialog } from "@/lib/useDialog";
 import { SizeDiagram } from "./SizeDiagram";
 
 export function QuickViewDrawer() {
@@ -17,19 +18,8 @@ export function QuickViewDrawer() {
   const product = slug ? getProduct(slug) : undefined;
   const isOpen = Boolean(product);
 
-  useEffect(() => {
-    if (!isOpen) return;
-    const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
-    const prevOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", onKey);
-    return () => {
-      document.body.style.overflow = prevOverflow;
-      window.removeEventListener("keydown", onKey);
-    };
-  }, [isOpen, close]);
+  const panelRef = useRef<HTMLElement>(null);
+  useDialog(isOpen, close, panelRef);
 
   return (
     <>
@@ -42,17 +32,18 @@ export function QuickViewDrawer() {
         aria-hidden="true"
       />
       <aside
+        ref={panelRef}
+        inert={!isOpen}
         className={cn(
           "fixed right-0 top-0 z-50 flex h-full w-full max-w-xl flex-col bg-paper shadow-2xl transition-transform duration-300 ease-out",
           isOpen ? "translate-x-0" : "translate-x-full"
         )}
         role="dialog"
         aria-modal="true"
-        aria-label={product ? `Xem nhanh ${product.name}` : "Xem nhanh sản phẩm"}
-        aria-hidden={!isOpen}
+        aria-label={product ? `Chi tiết ${product.name}` : "Chi tiết sản phẩm"}
       >
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-line/70 px-6">
-          <p className="text-eyebrow text-[0.65rem] text-ink/60">Xem Nhanh</p>
+          <p className="text-eyebrow text-xs text-ink/60">Chi Tiết Sản Phẩm</p>
           <button
             type="button"
             onClick={close}
@@ -113,7 +104,7 @@ function QuickViewBody({ product }: { product: Product }) {
         )}
 
         <div className="px-6 pb-8 pt-6">
-          <p className="text-eyebrow text-[0.6rem] text-gold-deep">{product.tag}</p>
+          <p className="text-eyebrow text-xs text-gold-deep">{product.tag}</p>
           <h2 className="mt-2 font-[family-name:var(--font-display)] text-3xl leading-tight text-ink">
             {product.name}
           </h2>
@@ -140,7 +131,7 @@ function QuickViewBody({ product }: { product: Product }) {
 
           {product.size && (
             <div className="mt-6 border border-line bg-paper-dim/60 p-5">
-              <p className="mb-3 text-eyebrow text-[0.58rem] text-ink/55">
+              <p className="mb-3 text-eyebrow text-xs text-ink/55">
                 Tỷ lệ so với người cao 170 cm
               </p>
               <SizeDiagram size={product.size} />
@@ -169,7 +160,7 @@ function QuickViewBody({ product }: { product: Product }) {
                 Đã chép sẵn tin nhắn kèm tên mẫu — dán vào Zalo để gửi.
               </>
             ) : (
-              <>Hãy nhắn tên mẫu “{product.name}” cho Anh Khoa trên Zalo.</>
+              <>Hãy nhắn tên mẫu “{product.name}” cho Anh Khoa trên Zalo vừa mở.</>
             )}
           </p>
         )}
@@ -184,10 +175,10 @@ function QuickViewBody({ product }: { product: Product }) {
             });
             closeQuickView();
           }}
-          className="flex h-11 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-[0.62rem] text-gold-deep transition-colors hover:bg-gold hover:text-paper"
+          className="flex h-11 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper"
         >
-          <ShoppingBag className="h-3.5 w-3.5" strokeWidth={1.5} />
-          Thêm vào danh sách tư vấn
+          <Heart className="h-3.5 w-3.5" strokeWidth={1.5} />
+          Thêm vào danh sách quan tâm
         </button>
       </div>
     </>

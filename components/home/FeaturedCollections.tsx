@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { collections } from "@/data/collections";
+import { useCatalogStore } from "@/store/catalogStore";
 
 export function FeaturedCollections() {
   const [wide, ...rest] = collections;
   return (
-    <section id="bo-suu-tap" className="scroll-mt-20 bg-paper-dim section-y">
+    <section id="bo-suu-tap" className="section-y scroll-mt-20 bg-paper-dim">
       <div className="container-page">
         <div className="rule-diamond mb-10">
           <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
@@ -31,9 +35,13 @@ function CollectionTile({
   collection: (typeof collections)[number];
   tall?: boolean;
 }) {
+  const setCollection = useCatalogStore((s) => s.setCollection);
   return (
-    <div
-      className={`group relative overflow-hidden bg-night ${
+    // Bấm vào bộ sưu tập → cuộn lên catalog và chỉ hiện các mẫu thuộc bộ này.
+    <a
+      href="#san-pham"
+      onClick={() => setCollection(collection.slug)}
+      className={`group relative block overflow-hidden bg-night ${
         tall ? "aspect-[4/5] md:aspect-auto md:h-full" : "aspect-[16/9]"
       }`}
     >
@@ -46,16 +54,18 @@ function CollectionTile({
       />
       <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/10 to-transparent" />
       <div className="relative z-[1] flex h-full flex-col justify-end p-6 sm:p-8">
-        <p className="text-eyebrow text-[0.65rem] text-gold-light">
-          {collection.tagline}
-        </p>
+        <p className="text-eyebrow text-xs text-gold-light">{collection.tagline}</p>
         <p className="mt-2 font-[family-name:var(--font-display)] text-3xl italic text-paper sm:text-4xl">
           {collection.name}
         </p>
-        <p className="mt-2 max-w-sm text-sm leading-relaxed text-paper/60">
+        <p className="mt-2 max-w-sm text-sm leading-relaxed text-paper/70">
           {collection.description}
         </p>
+        <span className="mt-4 inline-flex items-center gap-2 text-eyebrow text-xs text-gold-light">
+          Xem {collection.productSlugs.length} mẫu trong bộ
+          <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" strokeWidth={1.5} />
+        </span>
       </div>
-    </div>
+    </a>
   );
 }

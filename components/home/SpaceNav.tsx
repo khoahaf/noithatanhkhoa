@@ -35,7 +35,7 @@ export function SpaceNav() {
               <p className="font-[family-name:var(--font-display)] text-xl text-paper">
                 {c.name}
               </p>
-              <p className="mt-1 text-[0.7rem] leading-snug text-paper/60">
+              <p className="mt-1 text-xs leading-snug text-paper/70">
                 {c.tagline}
               </p>
             </div>

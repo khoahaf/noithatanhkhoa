@@ -1,12 +1,15 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
-import { Minus, Plus, ShoppingBag, Trash2, X } from "lucide-react";
+import { useRef } from "react";
+import { Heart, Minus, Plus, Trash2, X } from "lucide-react";
+import { CTA_CONSULT } from "@/constants/site";
 import { cartTotal, useCartStore } from "@/store/cartStore";
-import { formatVND } from "@/lib/utils";
+import { formatMillions } from "@/lib/utils";
 import { useMounted } from "@/lib/useMounted";
+import { useDialog } from "@/lib/useDialog";
 
+/** "Danh sách quan tâm" — hàng may đo không có giá cố định nên không gọi là giỏ hàng. */
 export function CartDrawer() {
   const mounted = useMounted();
   const isOpen = useCartStore((s) => s.isOpen);
@@ -14,6 +17,8 @@ export function CartDrawer() {
   const close = useCartStore((s) => s.close);
   const updateQuantity = useCartStore((s) => s.updateQuantity);
   const removeItem = useCartStore((s) => s.removeItem);
+  const panelRef = useRef<HTMLElement>(null);
+  useDialog(mounted && isOpen, close, panelRef);
 
   if (!mounted) return null;
 
@@ -28,21 +33,23 @@ export function CartDrawer() {
       />
 
       <aside
+        ref={panelRef}
+        inert={!isOpen}
         className={`fixed right-0 top-0 z-50 flex h-full w-full max-w-sm flex-col bg-paper shadow-xl transition-transform duration-300 ease-out ${
           isOpen ? "translate-x-0" : "translate-x-full"
         }`}
         role="dialog"
-        aria-label="Giỏ hàng"
-        aria-hidden={!isOpen}
+        aria-modal="true"
+        aria-label="Danh sách quan tâm"
       >
         <div className="flex h-20 shrink-0 items-center justify-between border-b border-line/60 px-6">
           <p className="text-eyebrow text-xs text-ink">
-            Giỏ Hàng {items.length > 0 && `(${items.length})`}
+            Danh Sách Quan Tâm {items.length > 0 && `(${items.length})`}
           </p>
           <button
             type="button"
             onClick={close}
-            aria-label="Đóng giỏ hàng"
+            aria-label="Đóng danh sách quan tâm"
             className="flex h-9 w-9 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
           >
             <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
@@ -51,12 +58,14 @@ export function CartDrawer() {
 
         {items.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 text-center">
-            <ShoppingBag className="h-8 w-8 text-ink/25" strokeWidth={1.25} />
-            <p className="text-sm text-ink/60">Giỏ hàng của bạn đang trống.</p>
+            <Heart className="h-8 w-8 text-ink/25" strokeWidth={1.25} />
+            <p className="text-[15px] text-ink/60">
+              Chưa có mẫu nào. Bấm “Thêm vào danh sách” ở mẫu bạn thích để nhờ Anh Khoa tư vấn cùng lúc.
+            </p>
             <button
               type="button"
               onClick={close}
-              className="mt-2 text-eyebrow text-[0.68rem] text-gold-deep underline underline-offset-4"
+              className="mt-2 text-eyebrow text-xs text-gold-deep underline underline-offset-4"
             >
               Tiếp tục xem sản phẩm
             </button>
@@ -84,7 +93,7 @@ export function CartDrawer() {
                         <button
                           type="button"
                           onClick={() => removeItem(item.slug)}
-                          aria-label={`Xoá ${item.name} khỏi giỏ`}
+                          aria-label={`Bỏ ${item.name} khỏi danh sách`}
                           className="shrink-0 text-ink/35 hover:text-ink"
                         >
                           <Trash2 className="h-4 w-4" strokeWidth={1.5} />
@@ -96,7 +105,7 @@ export function CartDrawer() {
                             type="button"
                             onClick={() => updateQuantity(item.slug, item.quantity - 1)}
                             aria-label="Giảm số lượng"
-                            className="flex h-7 w-7 items-center justify-center text-ink/70 hover:text-gold-deep"
+                            className="flex h-8 w-8 items-center justify-center text-ink/70 hover:text-gold-deep"
                           >
                             <Minus className="h-3 w-3" strokeWidth={1.5} />
                           </button>
@@ -107,13 +116,16 @@ export function CartDrawer() {
                             type="button"
                             onClick={() => updateQuantity(item.slug, item.quantity + 1)}
                             aria-label="Tăng số lượng"
-                            className="flex h-7 w-7 items-center justify-center text-ink/70 hover:text-gold-deep"
+                            className="flex h-8 w-8 items-center justify-center text-ink/70 hover:text-gold-deep"
                           >
                             <Plus className="h-3 w-3" strokeWidth={1.5} />
                           </button>
                         </div>
-                        <span className="font-[family-name:var(--font-mono)] text-sm text-gold-deep">
-                          {formatVND(item.price * item.quantity)}
+                        <span className="text-xs text-ink/55">
+                          từ{" "}
+                          <span className="font-[family-name:var(--font-mono)] text-sm text-gold-deep">
+                            {formatMillions(item.price * item.quantity)}
+                          </span>
                         </span>
                       </div>
                     </div>
@@ -124,21 +136,21 @@ export function CartDrawer() {
 
             <div className="shrink-0 border-t border-line/60 px-6 py-5">
               <div className="flex items-center justify-between text-sm">
-                <span className="text-ink/60">Tạm tính</span>
+                <span className="text-ink/60">Tổng tham khảo từ</span>
                 <span className="font-[family-name:var(--font-mono)] text-base text-ink">
-                  {formatVND(cartTotal(items))}
+                  {formatMillions(cartTotal(items))}
                 </span>
               </div>
-              <p className="mt-1.5 text-xs text-ink/45">
-                Giá trên chưa bao gồm chi phí giao hàng &amp; lắp đặt.
+              <p className="mt-1.5 text-xs leading-relaxed text-ink/55">
+                Báo giá chính xác sau khi Anh Khoa đo đạc và chốt chất liệu cùng bạn.
               </p>
-              <Link
+              <a
                 href="#lien-he"
                 onClick={close}
                 className="mt-4 flex h-12 w-full items-center justify-center bg-night text-eyebrow text-xs text-gold-light transition-colors hover:bg-night-soft"
               >
-                Gửi Giỏ Hàng Để Được Tư Vấn
-              </Link>
+                {CTA_CONSULT} Cho Danh Sách Này
+              </a>
             </div>
           </>
         )}

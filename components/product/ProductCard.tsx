@@ -21,7 +21,7 @@ export function ProductCard({
       <button
         type="button"
         onClick={open}
-        aria-label={`Xem nhanh ${product.name}`}
+        aria-label={`Xem chi tiết ${product.name}`}
         className="relative aspect-square overflow-hidden bg-paper-dim"
       >
         <Image
@@ -45,27 +45,27 @@ export function ProductCard({
           />
         )}
         {product.isNew && (
-          <span className="absolute left-3 top-3 bg-night px-2.5 py-1 text-eyebrow text-[0.58rem] text-gold-light">
+          <span className="absolute left-3 top-3 bg-night px-2.5 py-1 text-eyebrow text-xs text-gold-light">
             Mới
           </span>
         )}
-        <span className="absolute inset-x-3 bottom-3 hidden bg-paper/95 py-2.5 text-center text-eyebrow text-[0.6rem] text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block">
-          Xem Nhanh
+        <span className="absolute inset-x-3 bottom-3 hidden bg-paper/95 py-2.5 text-center text-eyebrow text-xs text-ink opacity-0 transition-opacity duration-300 group-hover:opacity-100 md:block">
+          Xem Chi Tiết
         </span>
       </button>
 
-      <p className="mt-4 text-eyebrow text-[0.58rem] text-gold-deep">{product.tag}</p>
+      <p className="mt-4 text-xs font-medium uppercase tracking-[0.12em] text-gold-deep">{product.tag}</p>
       <button type="button" onClick={open} className="mt-1.5 text-left">
         <span className="text-[15px] font-semibold leading-snug text-ink transition-colors hover:text-gold-deep">
           {product.name}
         </span>
       </button>
       {product.size && (
-        <p className="mt-1 font-[family-name:var(--font-mono)] text-[0.72rem] text-ink/55">
+        <p className="mt-1 font-[family-name:var(--font-mono)] text-xs text-ink/60">
           {formatSizeMM(product.size)}
         </p>
       )}
-      <p className="mt-2 text-[13px] text-ink/60">
+      <p className="mt-2 text-sm text-ink/60">
         Giá tham khảo từ{" "}
         <span className="whitespace-nowrap font-[family-name:var(--font-mono)] text-sm text-ink">
           {formatMillions(product.price)}
@@ -74,9 +74,9 @@ export function ProductCard({
       <button
         type="button"
         onClick={open}
-        className="mt-3 min-h-9 w-full border border-gold px-3 py-2 text-eyebrow leading-snug sm:w-auto sm:self-start text-[0.58rem] text-gold-deep transition-colors hover:bg-gold hover:text-paper"
+        className="mt-3 min-h-9 w-full border border-gold px-3 py-2 text-[13px] font-medium leading-snug text-gold-deep sm:w-auto sm:self-start transition-colors hover:bg-gold hover:text-paper"
       >
-        Nhận tư vấn kích thước
+        Xem chi tiết &amp; kích thước
       </button>
     </div>
   );

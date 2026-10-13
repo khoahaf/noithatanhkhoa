@@ -27,7 +27,7 @@ export function Projects() {
           <BeforeAfter key={project.slug} project={project} />
 
           <div>
-            <p className="text-eyebrow text-[0.6rem] text-gold-deep">
+            <p className="text-eyebrow text-xs text-gold-deep">
               {project.location} · {project.area}
             </p>
             <h3 className="mt-2 font-[family-name:var(--font-display)] text-3xl leading-tight text-ink">
@@ -87,10 +87,10 @@ function BeforeAfter({ project }: { project: Project }) {
         />
       </div>
 
-      <span className="pointer-events-none absolute left-4 top-4 bg-night/80 px-3 py-1 text-eyebrow text-[0.58rem] text-paper">
+      <span className="pointer-events-none absolute left-4 top-4 bg-night/80 px-3 py-1 text-eyebrow text-xs text-paper">
         Trước
       </span>
-      <span className="pointer-events-none absolute right-4 top-4 bg-gold px-3 py-1 text-eyebrow text-[0.58rem] text-paper">
+      <span className="pointer-events-none absolute right-4 top-4 bg-gold px-3 py-1 text-eyebrow text-xs text-paper">
         Sau
       </span>
 

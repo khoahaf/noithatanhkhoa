@@ -2,9 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Menu, ShoppingBag, X } from "lucide-react";
+import { Heart, Menu, X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
-import { NAV } from "@/constants/site";
+import { CTA_CONSULT, NAV } from "@/constants/site";
 import { cn } from "@/lib/utils";
 import { cartCount, useCartStore } from "@/store/cartStore";
 import { useMounted } from "@/lib/useMounted";
@@ -43,7 +43,7 @@ export function Header() {
             <Link
               key={item.href}
               href={item.href}
-              className="text-eyebrow text-[0.72rem] text-ink/80 transition-colors hover:text-gold-deep"
+              className="text-eyebrow text-[0.8rem] text-ink/80 transition-colors hover:text-gold-deep"
             >
               {item.label}
             </Link>
@@ -53,19 +53,19 @@ export function Header() {
         <div className="flex items-center gap-4">
           <Link
             href="#lien-he"
-            className="hidden h-10 items-center border border-gold px-5 text-eyebrow text-[0.68rem] text-gold-deep transition-colors hover:bg-gold hover:text-night md:flex"
+            className="hidden h-10 items-center border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper md:flex"
           >
-            Liên Hệ Ngay
+            {CTA_CONSULT}
           </Link>
           <button
             type="button"
             onClick={openCart}
-            aria-label="Mở giỏ hàng"
+            aria-label={count > 0 ? `Danh sách quan tâm (${count} mẫu)` : "Danh sách quan tâm"}
             className="relative flex h-10 w-10 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
           >
-            <ShoppingBag className="h-[19px] w-[19px]" strokeWidth={1.5} />
+            <Heart className="h-[19px] w-[19px]" strokeWidth={1.5} />
             {count > 0 && (
-              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 font-[family-name:var(--font-mono)] text-[0.6rem] leading-none text-night">
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 font-[family-name:var(--font-mono)] text-xs leading-none text-paper">
                 {count}
               </span>
             )}
@@ -99,6 +99,13 @@ export function Header() {
                 {item.label}
               </Link>
             ))}
+            <a
+              href="#lien-he"
+              onClick={() => setMenuOpen(false)}
+              className="mt-4 flex h-12 items-center justify-center bg-gold text-eyebrow text-xs text-paper"
+            >
+              {CTA_CONSULT}
+            </a>
           </div>
         </nav>
       )}

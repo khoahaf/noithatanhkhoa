@@ -1,21 +1,22 @@
-import { SITE } from "@/constants/site";
+import { ZALO_URL } from "@/constants/site";
 
-export const ZALO_URL = `https://zalo.me/${SITE.zaloPhone}`;
+export { ZALO_URL };
 
 /**
  * Link zalo.me không hỗ trợ điền sẵn tin nhắn, nên ta chép nội dung vào
- * clipboard trước rồi mở Zalo — khách chỉ cần dán và gửi.
+ * clipboard rồi mở Zalo — khách chỉ cần dán và gửi.
+ *
+ * window.open phải chạy ĐỒNG BỘ trong cú bấm: nếu chờ clipboard xong mới mở,
+ * Safari/iOS coi đó không còn là thao tác của người dùng và chặn cửa sổ.
  */
-export async function openZaloWithMessage(message: string) {
-  let copied = false;
-  try {
-    await navigator.clipboard.writeText(message);
-    copied = true;
-  } catch {
-    // Clipboard bị chặn (http, quyền trình duyệt) — vẫn mở Zalo bình thường.
-  }
+export function openZaloWithMessage(message: string): Promise<boolean> {
+  const copy = navigator.clipboard?.writeText(message);
   window.open(ZALO_URL, "_blank", "noopener,noreferrer");
-  return copied;
+  if (!copy) return Promise.resolve(false);
+  return copy.then(
+    () => true,
+    () => false
+  );
 }
 
 export function quoteMessage(productName: string, dims?: string) {

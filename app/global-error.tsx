@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SITE } from "@/constants/site";
 import "./globals.css";
 
@@ -23,12 +24,12 @@ export default function GlobalError({ reset }: { reset: () => void }) {
           >
             Thử Lại
           </button>
-          <a
+          <Link
             href="/"
             className="flex h-12 items-center px-6 text-eyebrow text-xs text-ink/70 underline decoration-line underline-offset-4 hover:text-gold-deep"
           >
             Về Trang Chủ
-          </a>
+          </Link>
         </div>
       </body>
     </html>

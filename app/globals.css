@@ -84,6 +84,17 @@ body {
   }
 }
 
+/* Chừa chỗ cho thanh liên hệ cố định dưới đáy trên mobile. */
+@media (max-width: 639px) {
+  html {
+    scroll-padding-bottom: calc(5rem + env(safe-area-inset-bottom));
+  }
+
+  body {
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom));
+  }
+}
+
 .section-y {
   padding-block: 4rem;
 }

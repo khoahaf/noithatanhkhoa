@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { img } from "@/lib/images";
+import { SITE } from "@/constants/site";
 
 const photos = [
   { src: img.livingRoomBlue, tall: false },
@@ -16,14 +17,25 @@ export function InstagramGallery() {
       <div className="container-page">
         <div className="rule-diamond mb-3">
           <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
-            Không Gian Của Bạn
+            Góc Nhà Khách Hàng
           </p>
         </div>
-        <p className="mb-10 max-w-md text-sm text-ink/55">
+        <p className="mb-10 max-w-md text-[15px] text-ink/60">
           Gắn thẻ{" "}
-          <span className="font-[family-name:var(--font-mono)] text-gold-deep">
-            @anhkhoa.vn
-          </span>{" "}
+          {SITE.social.instagram ? (
+            <a
+              href={SITE.social.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-[family-name:var(--font-mono)] text-gold-deep underline underline-offset-4"
+            >
+              {SITE.social.instagramHandle}
+            </a>
+          ) : (
+            <span className="font-[family-name:var(--font-mono)] text-gold-deep">
+              {SITE.social.instagramHandle}
+            </span>
+          )}{" "}
           để góc nhà bạn xuất hiện tại đây.
         </p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">

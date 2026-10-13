@@ -25,7 +25,11 @@ const nextConfig: NextConfig = {
     trailingSlash: true,
   }),
   images: {
-    unoptimized: isGithubPages,
+    // Unsplash CDN tự cắt ảnh theo bề rộng (srcset) — chạy được cả trên GitHub Pages.
+    loader: "custom",
+    loaderFile: "./lib/imageLoader.ts",
+    deviceSizes: [400, 640, 828, 1080, 1280, 1600, 1920],
+    imageSizes: [64, 128, 256, 384],
     remotePatterns: [
       {
         protocol: "https",
