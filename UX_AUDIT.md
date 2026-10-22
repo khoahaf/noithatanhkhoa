@@ -243,6 +243,15 @@ Cả hai bản đều chạy trên **cùng một máy chủ tĩnh cục bộ** (
 | `label-content-name-mismatch` | 7 | **0** | 8 | **0** |
 | Best Practices / SEO | 100 / 100 | 100 / 100 | 100 / 100 | 100 / 100 |
 
+**Trên web thật** (GitHub Pages, sau khi deploy `bfe906a`, Lighthouse đo 1 lần, số giả lập có dao động):
+
+| | Trước audit (mobile / desktop) | Sau (mobile / desktop) |
+|---|---|---|
+| Performance | 85 / 98 | 84 / 98 |
+| LCP | 4,2 s / 1,1 s | **3,6 s** / 1,2 s |
+| Accessibility | 96 / 96 | **97 / 97** |
+| Phần tử thiếu tương phản | 63 | **1** (logo, được miễn) |
+
 ### E3. Kiểm thử hồi quy (sau khi sửa)
 
 - `tsc --noEmit` ✅ · `npm run lint` ✅ · `DEPLOY_TARGET=github-pages npm run build` ✅ (thêm 2 route tĩnh `/icon.svg`, `/apple-icon.png`).
