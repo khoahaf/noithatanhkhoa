@@ -2,13 +2,14 @@ import Image from "next/image";
 import { img } from "@/lib/images";
 import { SITE } from "@/constants/site";
 
+// Ảnh minh hoạ (Unsplash), không phải nhà khách hàng — alt mô tả đúng nội dung từng ảnh.
 const photos = [
-  { src: img.livingRoomBlue, tall: false },
-  { src: img.bedroomArt, tall: true },
-  { src: img.livingRoomStripe, tall: false },
-  { src: img.openLivingDining, tall: false },
-  { src: img.livingRoomGreen, tall: true },
-  { src: img.bedroomLux, tall: false },
+  { src: img.livingRoomBlue, tall: false, alt: "Phòng khách sáng với sofa xanh dương và kệ tivi trắng" },
+  { src: img.bedroomArt, tall: true, alt: "Sofa trắng gối xanh dưới bức tranh hoa khổ lớn" },
+  { src: img.livingRoomStripe, tall: false, alt: "Phòng khách sofa xám, đôn da cam và bàn trà gỗ" },
+  { src: img.openLivingDining, tall: false, alt: "Phòng khách liền phòng ăn với ghế bành và cửa kính lớn" },
+  { src: img.livingRoomGreen, tall: true, alt: "Sofa xám phủ chăn len, bàn gỗ tròn và cây xanh" },
+  { src: img.bedroomLux, tall: false, alt: "Phòng ngủ tường xanh nhạt với đèn mây và cây treo" },
 ];
 
 export function InstagramGallery() {
@@ -17,11 +18,11 @@ export function InstagramGallery() {
       <div className="container-page">
         <div className="rule-diamond mb-3">
           <h2 className="text-eyebrow shrink-0 text-xs text-gold-deep">
-            Góc Nhà Khách Hàng
+            Cảm Hứng Không Gian
           </h2>
         </div>
         <p className="mb-10 max-w-md text-[15px] text-ink/70">
-          Gắn thẻ{" "}
+          Gợi ý bố trí và phối đồ để bạn hình dung tổ ấm của mình. Theo dõi{" "}
           {SITE.social.instagram ? (
             <a
               href={SITE.social.instagram}
@@ -36,7 +37,7 @@ export function InstagramGallery() {
               {SITE.social.instagramHandle}
             </span>
           )}{" "}
-          để góc nhà bạn xuất hiện tại đây.
+          để xem thêm.
         </p>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-6">
           {photos.map((p, i) => (
@@ -48,7 +49,7 @@ export function InstagramGallery() {
             >
               <Image
                 src={p.src}
-                alt="Không gian sống của khách hàng Anh Khoa"
+                alt={p.alt}
                 fill
                 sizes="(min-width:768px) 16vw, 45vw"
                 className="object-cover transition-transform duration-500 hover:scale-105"

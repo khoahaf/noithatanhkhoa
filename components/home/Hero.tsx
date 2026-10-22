@@ -105,12 +105,12 @@ export function Hero() {
         <div className="mt-9 flex flex-wrap items-center gap-4">
           <a
             href="#lien-he"
-            className="flex h-12 items-center bg-gold px-7 text-eyebrow text-xs text-paper transition-colors hover:bg-gold-deep"
+            className="flex h-12 items-center bg-gold-deep px-7 text-eyebrow text-xs text-paper transition-colors hover:bg-night"
           >
             {CTA.heroPrimary}
           </a>
           <a
-            href="#bo-suu-tap"
+            href="#bo-suu-tap-noi-bat"
             className="flex h-12 items-center gap-2 border border-gold-light/60 px-6 text-eyebrow text-xs text-paper/90 transition-colors hover:border-gold-light hover:text-gold-light"
           >
             {CTA.heroSecondary}

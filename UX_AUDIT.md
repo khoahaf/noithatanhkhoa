@@ -213,16 +213,16 @@ Nguyên tắc: không đổi bố cục, màu thương hiệu, nội dung kinh d
 | UX-01 | ⏸ **Chờ dữ liệu** · sửa tạm ✅ | Thêm dòng báo trước dưới nút gửi (chỉ hiện khi chưa có endpoint): "Sau khi bấm gửi, nội dung được soạn sẵn để bạn gửi tiếp qua Zalo…" | Đã kiểm tra: dòng hiện ở 375 px; luồng gửi → khung Zalo vẫn đúng |
 | UX-02 | ⏸ **Chờ dữ liệu** | — | — |
 | UX-03 | ✅ Đã sửa, đã kiểm tra | Menu đầy đủ chỉ hiện từ `xl` (≥ 1280 px), dưới mức đó dùng menu thu gọn. Thêm `shrink-0`, `whitespace-nowrap` | 768, 1024, 1280, 1440 px: 0 phần tử tràn header, nút icon 44 × 44. Ảnh chụp 768 px trước/sau |
-| UX-04 | ❓ **Cần chủ shop quyết định** | — | — |
-| UX-05 | ❓ **Cần chủ shop quyết định** | Đã chuyển tiêu đề khối thành `h2` (UX-10); nội dung chưa đổi | — |
-| UX-06 | ✅ Phần chữ xám đã sửa · ❓ phần vàng chờ quyết định | `text-ink/50–65` → `text-ink/70` (38 chỗ), chữ bản quyền footer `paper/40` → `paper/65`, "~5 phút" bỏ độ mờ | Lighthouse: **63 → 3 phần tử** (mobile). 3 phần tử còn lại: nút vàng Hero (3,6), tiêu đề vàng trên nền be (4,02), logo footer (4,11, **logo được WCAG miễn**) |
+| UX-04 | ✅ Đã sửa theo quyết định (chủ shop giao: "chọn cái hợp lý nhất") | Giữ nguyên mọi câu chữ đặc tả, chỉ sửa đích đến: menu/footer **"Bộ Sưu Tập" → "Không Gian"** (dẫn tới "Chọn Không Gian Cho Tổ Ấm"); nút Hero **"Khám Phá Bộ Sưu Tập ↓" → `#bo-suu-tap-noi-bat`** (khối "Bộ Sưu Tập Nổi Bật") | Script đối chiếu: mọi link `#…` ở header, footer và Hero đều dẫn tới khối có tiêu đề khớp nhãn |
+| UX-05 | ✅ Đã sửa theo quyết định "Đổi thành Cảm Hứng" | Tiêu đề **"Cảm Hứng Không Gian"**; mô tả "Gợi ý bố trí và phối đồ…"; 6 alt mô tả đúng nội dung từng ảnh (đã xem từng ảnh). Ghi chú trong code: ảnh minh hoạ, không phải nhà khách | 6/6 ảnh có alt riêng, không còn câu "của khách hàng" |
+| UX-06 | ✅ Đã sửa (phần vàng theo quyết định "Làm đậm vàng nhẹ") | `text-ink/50–65` → `text-ink/70` (38 chỗ), chữ bản quyền footer `paper/40` → `paper/65`, "~5 phút" bỏ độ mờ; đổi token vàng (xem cột bên) | Lighthouse: **63 → 1 phần tử**: chỉ còn logo "ANH KHOA" ở footer (4,11). **Logo được WCAG 1.4.3 miễn yêu cầu tương phản**, nên giữ màu thương hiệu. Token `gold-deep` #8C6D46 → **#7A5D38**; nút/huy hiệu nền vàng có chữ sáng chuyển sang `gold-deep` (paper trên #7A5D38 ≈ 5,7:1; #7A5D38 trên `paper-dim` ≈ 5,1:1) |
 | UX-07 | ✅ Đã sửa, đã kiểm tra | Esc đóng menu và trả focus về nút; `aria-controls="menu-di-dong"` | Đã kiểm tra ở 768 px |
 | UX-08 | ✅ Đã sửa, đã kiểm tra | Logo lấy tên từ chữ hiển thị; nhãn "Mới" đưa ra ngoài nút ảnh; bỏ `aria-label` không khớp ở nút Zalo nổi (desktop) | Lighthouse không còn `label-content-name-mismatch` (mobile + desktop) |
 | UX-09 | ✅ Đã sửa, đã kiểm tra | Skip link "Bỏ qua tới nội dung chính" → `<main id="noi-dung">` | Nhấn Tab thật: link hiện, cao 44 px; Enter → focus vào `MAIN` |
 | UX-10 | ✅ Đã sửa, đã kiểm tra | "Bộ Sưu Tập Nổi Bật", "Góc Nhà Khách Hàng" → `h2`; tên bộ sưu tập → `h3`. Giữ nguyên class hiển thị | Dàn heading: H1 → 5 H2 nội dung + H2 Liên hệ, mỗi khối một H2 |
 | UX-11 | ✅ Đã sửa, đã kiểm tra (số đo giả lập) | Cormorant chỉ tải 400 (thường + nghiêng); Be Vietnam 400/500/600; Plex Mono 400 và không tải trước. Ảnh Hero: `priority` (bị bỏ ở Next 16) → `loading="eager"` + `fetchPriority="high"` | Font preload **20 → 12**. Cảnh báo LCP trong console đã hết. Lighthouse cùng máy chủ cục bộ: xem E2 |
 | UX-12 | ⏭ Để sau | — | Cần thử trên Android thật |
-| UX-13 | ❓ **Cần chủ shop quyết định** | — | — |
+| UX-13 | ✅ Nội dung đã sửa theo quyết định "Bỏ dòng này" · hiển thị giữ nguyên | "Đổi trả trong 15 ngày" → "Khảo sát tận nơi miễn phí" (đã có trong cam kết dịch vụ). Các dòng chính sách vẫn là chữ thường, chưa có trang chính sách riêng | Footer hiển thị 4 dòng mới |
 | UX-14 | Không sửa (đã ghi nhận) | — | — |
 | UX-15 | ✅ Đã sửa, đã kiểm tra | `app/icon.svg`, `app/favicon.ico`, `app/apple-icon.png` dựng từ biểu tượng ngôi nhà trong `Logo.tsx` (nền `night`, nét `gold-light`) | HTML build có `<link rel="icon" … svg>` và `apple-touch-icon` |
 | UX-16 | ✅ Đã sửa, đã kiểm tra | `alternates.canonical` dạng URL tuyệt đối (vì `metadataBase` có basePath) | HTML build: `canonical = https://khoahaf.github.io/noithatanhkhoa/` |
@@ -239,7 +239,7 @@ Cả hai bản đều chạy trên **cùng một máy chủ tĩnh cục bộ** (
 | Performance | 70 / 68 | 71 / 72 | 92 | 94–95 |
 | LCP | 8,0 s / 8,8 s | 7,2 s / 7,9 s / 7,5 s | 1,8 s | 1,5–1,6 s |
 | Accessibility | 96 | **97** | 96 | **97** |
-| Phần tử thiếu tương phản | 63 | **3** | 63 | **4** |
+| Phần tử thiếu tương phản | 63 | **3** → **1** sau khi đổi màu vàng (chỉ còn logo, được miễn) | 63 | **4** → **1** |
 | `label-content-name-mismatch` | 7 | **0** | 8 | **0** |
 | Best Practices / SEO | 100 / 100 | 100 / 100 | 100 / 100 | 100 / 100 |
 
@@ -253,6 +253,7 @@ Cả hai bản đều chạy trên **cùng một máy chủ tĩnh cục bộ** (
 ### E4. Còn tồn tại / giới hạn
 
 - **P0 chưa giải quyết** (UX-01, UX-02): cần thông tin thật từ chủ shop.
-- **Chờ quyết định:** UX-04, UX-05, UX-06 (màu vàng), UX-13.
+- Các quyết định thiết kế (UX-04, 05, 06, 13) đã được chủ shop chọn ngày 22/10/2026 và đã áp dụng.
+- Lighthouse vẫn báo 1 lỗi tương phản cho logo footer (điểm Accessibility 97). Đây là ngoại lệ hợp lệ theo WCAG; muốn đạt 100 thì phải đổi logo footer sang `gold-light`, tức là thay đổi nhận diện, cần chủ shop đồng ý.
 - **LCP mobile vẫn trên ngưỡng 2,5 s** trong điều kiện giả lập. Giảm tiếp cần quyết định thiết kế: bớt font (vd. thay Prata bằng Cormorant cho chữ nhỏ viết hoa), hoặc chuyển hosting sang nơi có cache dài (GitHub Pages cố định cache 10 phút).
 - Chưa kiểm tra trên Safari/iOS, Android thật hay trình đọc màn hình thật. Mọi nhận định hành vi trong mục D vẫn là giả thuyết.

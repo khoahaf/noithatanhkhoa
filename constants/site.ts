@@ -54,7 +54,8 @@ export const FOOTER_COMMITMENTS = [
 
 export const NAV = [
   { label: "Sản Phẩm", href: "#san-pham" },
-  { label: "Bộ Sưu Tập", href: "#bo-suu-tap" },
+  // Nhãn khớp tiêu đề khối "Chọn Không Gian Cho Tổ Ấm" (#bo-suu-tap) mà nó dẫn tới.
+  { label: "Không Gian", href: "#bo-suu-tap" },
   { label: "Câu Chuyện", href: "#cau-chuyen" },
   { label: "Liên Hệ", href: "#lien-he" },
 ];

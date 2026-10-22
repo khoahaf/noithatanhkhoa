@@ -66,7 +66,7 @@ export function Header() {
         <div className="flex items-center gap-1 sm:gap-4">
           <Link
             href="#lien-he"
-            className="hidden h-11 shrink-0 items-center whitespace-nowrap border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper xl:flex"
+            className="hidden h-11 shrink-0 items-center whitespace-nowrap border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper xl:flex"
           >
             {CTA.header}
           </Link>
@@ -78,7 +78,7 @@ export function Header() {
           >
             <Heart className="h-[19px] w-[19px]" strokeWidth={1.5} />
             {count > 0 && (
-              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold px-1 font-[family-name:var(--font-mono)] text-xs leading-none text-paper">
+              <span className="absolute right-0.5 top-0.5 flex h-4 min-w-4 items-center justify-center rounded-full bg-gold-deep px-1 font-[family-name:var(--font-mono)] text-xs leading-none text-paper">
                 {count}
               </span>
             )}
@@ -117,7 +117,7 @@ export function Header() {
             <a
               href="#lien-he"
               onClick={() => setMenuOpen(false)}
-              className="mt-4 flex h-12 items-center justify-center bg-gold text-eyebrow text-xs text-paper"
+              className="mt-4 flex h-12 items-center justify-center bg-gold-deep text-eyebrow text-xs text-paper"
             >
               {CTA.header}
             </a>

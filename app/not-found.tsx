@@ -15,7 +15,7 @@ export default function NotFound() {
       <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
         <Link
           href="/"
-          className="flex h-12 items-center border border-gold px-6 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-night"
+          className="flex h-12 items-center border border-gold px-6 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper"
         >
           Về Trang Chủ
         </Link>

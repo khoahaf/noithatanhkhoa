@@ -97,7 +97,7 @@ export function ProductCard({
             false
           )
         }
-        className="mt-auto flex min-h-11 w-full items-center justify-center whitespace-nowrap border border-gold px-1 py-2 text-center text-xs font-medium leading-snug sm:px-3 sm:text-[13px] text-gold-deep transition-colors hover:bg-gold hover:text-paper sm:w-auto sm:self-start"
+        className="mt-auto flex min-h-11 w-full items-center justify-center whitespace-nowrap border border-gold px-1 py-2 text-center text-xs font-medium leading-snug sm:px-3 sm:text-[13px] text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper sm:w-auto sm:self-start"
       >
         {CTA.productQuote}
       </a>

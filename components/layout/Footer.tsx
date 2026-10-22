@@ -53,7 +53,7 @@ export function Footer() {
           <ul className="mt-4 space-y-3 text-sm text-paper/70">
             <li>Vận chuyển &amp; lắp đặt</li>
             <li>Bảo hành kết cấu 03 năm</li>
-            <li>Đổi trả trong 15 ngày</li>
+            <li>Khảo sát tận nơi miễn phí</li>
             <li>Chăm sóc chất liệu</li>
           </ul>
         </div>

@@ -166,7 +166,7 @@ export function Contact() {
               )}
               <a
                 href={PHONE_HREF}
-                className="flex h-12 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper"
+                className="flex h-12 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper"
               >
                 <Phone className="h-4 w-4" strokeWidth={1.5} />
                 Gọi {SITE.phone}

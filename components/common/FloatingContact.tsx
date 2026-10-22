@@ -34,7 +34,7 @@ export function FloatingContact() {
           </span>
           <span className="relative flex h-14 w-14 items-center justify-center rounded-full bg-[#0068ff] text-white shadow-lg transition-transform group-hover:scale-105">
             <MessageCircle className="h-6 w-6" strokeWidth={1.8} />
-            <span className="absolute -right-1 -top-1 rounded-full bg-gold px-1.5 py-0.5 text-[0.65rem] font-semibold leading-none text-paper">
+            <span className="absolute -right-1 -top-1 rounded-full bg-gold-deep px-1.5 py-0.5 text-[0.65rem] font-semibold leading-none text-paper">
               Zalo
             </span>
           </span>

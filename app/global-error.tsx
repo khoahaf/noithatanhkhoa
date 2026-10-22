@@ -20,7 +20,7 @@ export default function GlobalError({ reset }: { reset: () => void }) {
           <button
             type="button"
             onClick={reset}
-            className="flex h-12 items-center border border-gold px-6 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-night"
+            className="flex h-12 items-center border border-gold px-6 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper"
           >
             Thử Lại
           </button>

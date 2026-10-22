@@ -90,7 +90,7 @@ function BeforeAfter({ project }: { project: Project }) {
       <span className="pointer-events-none absolute left-4 top-4 bg-night/80 px-3 py-1 text-eyebrow text-xs text-paper">
         Trước
       </span>
-      <span className="pointer-events-none absolute right-4 top-4 bg-gold px-3 py-1 text-eyebrow text-xs text-paper">
+      <span className="pointer-events-none absolute right-4 top-4 bg-gold-deep px-3 py-1 text-eyebrow text-xs text-paper">
         Sau
       </span>
 

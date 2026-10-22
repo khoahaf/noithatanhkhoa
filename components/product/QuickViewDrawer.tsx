@@ -182,7 +182,7 @@ function QuickViewBody({ product }: { product: Product }) {
             });
             closeQuickView();
           }}
-          className="flex h-11 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper"
+          className="flex h-11 w-full items-center justify-center gap-2 border border-gold text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold-deep hover:text-paper"
         >
           <Heart className="h-3.5 w-3.5" strokeWidth={1.5} />
           Thêm vào danh sách quan tâm

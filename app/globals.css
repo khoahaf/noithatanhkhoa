@@ -2,13 +2,14 @@
 
 :root {
   /* Warm Alabaster canvas + charcoal ink instead of pure white/black,
-     smoked-brass accent (#9E7D47) with a darker teak tone for small text. */
+     smoked-brass accent (#9E7D47) with a darker teak tone for small text and solid buttons. */
   --color-ink: #2a2723;
   --color-paper: #f9f8f5;
   --color-paper-dim: #f0ebe1;
   --color-night: #1f2421;
   --color-night-soft: #2b302c;
-  --color-gold-deep: #8c6d46;
+  /* Đậm hơn đặc tả (#8C6D46) để chữ nhỏ và nút chính đạt tương phản WCAG AA (≥ 4,5:1). */
+  --color-gold-deep: #7a5d38;
   --color-gold: #9e7d47;
   --color-gold-light: #d9c29a;
   --color-line: #e2d9c8;
