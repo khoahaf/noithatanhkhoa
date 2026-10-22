@@ -49,7 +49,7 @@ export function CartDrawer() {
             type="button"
             onClick={close}
             aria-label="Đóng danh sách quan tâm"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/70 hover:bg-paper-dim hover:text-ink"
           >
             <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </button>
@@ -58,7 +58,7 @@ export function CartDrawer() {
         {items.length === 0 ? (
           <div className="flex flex-1 flex-col items-center justify-center gap-3 px-6 text-center">
             <Heart className="h-8 w-8 text-ink/25" strokeWidth={1.25} />
-            <p className="text-[15px] text-ink/60">
+            <p className="text-[15px] text-ink/70">
               Chưa có mẫu nào. Bấm “Thêm vào danh sách” ở mẫu bạn thích để nhờ Anh Khoa tư vấn cùng lúc.
             </p>
             <button
@@ -129,7 +129,7 @@ export function CartDrawer() {
             </div>
 
             <div className="shrink-0 border-t border-line/60 px-6 py-5">
-              <p className="text-sm leading-relaxed text-ink/60">
+              <p className="text-sm leading-relaxed text-ink/70">
                 Báo giá theo kích thước căn hộ của bạn, sau khi đo đạc và chốt chất liệu.
               </p>
               <a

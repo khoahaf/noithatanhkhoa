@@ -12,7 +12,8 @@ import "./globals.css";
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500", "600", "700"],
+  // Chỉ dùng 400 (thường + nghiêng) — tải thêm độ đậm khác chỉ làm chậm ảnh Hero trên mobile.
+  weight: ["400"],
   style: ["normal", "italic"],
 });
 
@@ -25,13 +26,15 @@ const prata = Prata({
 const beVietnam = Be_Vietnam_Pro({
   variable: "--font-be-vietnam",
   subsets: ["latin", "vietnamese"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600"],
 });
 
 const plexMono = IBM_Plex_Mono({
   variable: "--font-plex-mono",
   subsets: ["latin", "vietnamese"],
-  weight: ["400", "500"],
+  weight: ["400"],
+  // Chỉ dùng cho thông số kích thước bên dưới màn hình đầu — không cần tải trước.
+  preload: false,
 });
 
 export const metadata: Metadata = {
@@ -41,6 +44,8 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   metadataBase: new URL(SITE.url),
+  // URL tuyệt đối: metadataBase có basePath, "/" tương đối sẽ bị tính về gốc domain.
+  alternates: { canonical: `${SITE.url}/` },
   // Ảnh + mô tả khi khách chia sẻ link qua Zalo / Facebook / Messenger.
   openGraph: {
     type: "website",
@@ -67,8 +72,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       className={`${cormorant.variable} ${prata.variable} ${beVietnam.variable} ${plexMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col bg-paper text-ink">
+        <a
+          href="#noi-dung"
+          className="sr-only z-50 bg-night text-sm text-paper focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:px-4 focus:py-3"
+        >
+          Bỏ qua tới nội dung chính
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="noi-dung" tabIndex={-1} className="flex-1 outline-none">
+          {children}
+        </main>
         <Footer />
         <CartDrawer />
         <QuickViewDrawer />

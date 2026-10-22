@@ -18,7 +18,7 @@ export function Projects() {
             Dự Án Thực Tế
           </p>
         </div>
-        <p className="mx-auto mb-10 max-w-lg text-center text-[15px] text-ink/60">
+        <p className="mx-auto mb-10 max-w-lg text-center text-[15px] text-ink/70">
           Kéo thanh trượt để xem không gian trước và sau khi Anh Khoa hoàn thiện.
         </p>
 
@@ -38,7 +38,7 @@ export function Projects() {
               <blockquote className="mt-2 font-[family-name:var(--font-display)] text-xl italic leading-relaxed text-ink/85">
                 {project.quote}
               </blockquote>
-              <figcaption className="mt-4 text-sm text-ink/60">— {project.client}</figcaption>
+              <figcaption className="mt-4 text-sm text-ink/70">— {project.client}</figcaption>
             </figure>
 
             <div className="mt-8 flex gap-2" role="tablist" aria-label="Chọn dự án">

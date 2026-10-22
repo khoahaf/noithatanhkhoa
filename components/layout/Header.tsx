@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Heart, Menu, X } from "lucide-react";
 import { Logo } from "@/components/common/Logo";
 import { CTA, NAV } from "@/constants/site";
@@ -16,6 +16,19 @@ export function Header() {
   const items = useCartStore((s) => s.items);
   const openCart = useCartStore((s) => s.open);
   const count = mounted ? cartCount(items) : 0;
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Esc đóng menu mobile và trả focus về nút mở menu.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenuOpen(false);
+      menuButtonRef.current?.focus();
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -34,16 +47,16 @@ export function Header() {
       )}
     >
       <div className="container-page flex h-20 items-center justify-between">
-        <Link href="/" aria-label="Về đầu trang Anh Khoa" onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center">
+        <Link href="/" onClick={() => setMenuOpen(false)} className="flex min-h-11 items-center">
           <Logo tone="ink" />
         </Link>
 
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav aria-label="Điều hướng chính" className="hidden items-center gap-8 xl:flex 2xl:gap-9">
           {NAV.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="text-eyebrow text-[0.8rem] text-ink/80 transition-colors hover:text-gold-deep"
+              className="whitespace-nowrap text-eyebrow text-[0.8rem] text-ink/80 transition-colors hover:text-gold-deep"
             >
               {item.label}
             </Link>
@@ -53,7 +66,7 @@ export function Header() {
         <div className="flex items-center gap-1 sm:gap-4">
           <Link
             href="#lien-he"
-            className="hidden h-11 items-center border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper md:flex"
+            className="hidden h-11 shrink-0 items-center whitespace-nowrap border border-gold px-5 text-eyebrow text-xs text-gold-deep transition-colors hover:bg-gold hover:text-paper xl:flex"
           >
             {CTA.header}
           </Link>
@@ -61,7 +74,7 @@ export function Header() {
             type="button"
             onClick={openCart}
             aria-label={count > 0 ? `Danh sách quan tâm (${count} mẫu)` : "Danh sách quan tâm"}
-            className="relative flex h-11 w-11 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
+            className="relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-ink transition-colors hover:text-gold-deep"
           >
             <Heart className="h-[19px] w-[19px]" strokeWidth={1.5} />
             {count > 0 && (
@@ -71,8 +84,10 @@ export function Header() {
             )}
           </button>
           <button
+            ref={menuButtonRef}
             type="button"
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-ink/15 text-ink md:hidden"
+            aria-controls="menu-di-dong"
+            className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-ink/15 text-ink xl:hidden"
             aria-label={menuOpen ? "Đóng menu" : "Mở menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v) => !v)}
@@ -87,7 +102,7 @@ export function Header() {
       </div>
 
       {menuOpen && (
-        <nav className="border-t border-line/60 bg-paper md:hidden">
+        <nav id="menu-di-dong" aria-label="Điều hướng" className="border-t border-line/60 bg-paper xl:hidden">
           <div className="container-page flex flex-col py-4">
             {NAV.map((item) => (
               <Link

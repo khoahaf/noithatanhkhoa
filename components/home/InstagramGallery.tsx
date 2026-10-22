@@ -16,11 +16,11 @@ export function InstagramGallery() {
     <section className="section-y">
       <div className="container-page">
         <div className="rule-diamond mb-3">
-          <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
+          <h2 className="text-eyebrow shrink-0 text-xs text-gold-deep">
             Góc Nhà Khách Hàng
-          </p>
+          </h2>
         </div>
-        <p className="mb-10 max-w-md text-[15px] text-ink/60">
+        <p className="mb-10 max-w-md text-[15px] text-ink/70">
           Gắn thẻ{" "}
           {SITE.social.instagram ? (
             <a

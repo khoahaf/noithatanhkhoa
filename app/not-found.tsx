@@ -8,7 +8,7 @@ export default function NotFound() {
       <h1 className="mt-4 font-[family-name:var(--font-display)] text-3xl italic text-ink sm:text-4xl">
         Không tìm thấy trang bạn cần
       </h1>
-      <p className="mt-3 max-w-md text-sm text-ink/60">
+      <p className="mt-3 max-w-md text-sm text-ink/70">
         Trang này có thể đã bị di chuyển hoặc không còn tồn tại. Quay lại trang
         chủ để tiếp tục khám phá nội thất Anh Khoa.
       </p>

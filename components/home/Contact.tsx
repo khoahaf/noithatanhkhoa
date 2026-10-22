@@ -5,7 +5,7 @@ import { AlertCircle, Heart, Loader2, Lock, Mail, MapPin, MessageCircle, Phone }
 import { CTA, PHONE_HREF, SITE } from "@/constants/site";
 import { useCartStore, type CartItem } from "@/store/cartStore";
 import { useMounted } from "@/lib/useMounted";
-import { normalizeVNPhone, submitLead } from "@/lib/leads";
+import { hasLeadEndpoint, normalizeVNPhone, submitLead } from "@/lib/leads";
 import { openZaloWithMessage } from "@/lib/zalo";
 
 function buildCartMessage(items: CartItem[]) {
@@ -106,7 +106,7 @@ export function Contact() {
               <span>
                 {SITE.address}
                 <br />
-                <span className="text-ink/50">{SITE.hours}</span>
+                <span className="text-ink/70">{SITE.hours}</span>
               </span>
             </li>
             <li className="flex items-center gap-3">
@@ -130,7 +130,7 @@ export function Contact() {
               <p className="font-[family-name:var(--font-display)] text-2xl italic text-ink">
                 Anh Khoa đã nhận được yêu cầu
               </p>
-              <p className="mt-2 text-[15px] text-ink/60">
+              <p className="mt-2 text-[15px] text-ink/70">
                 Chúng tôi sẽ gọi lại số {phone} trong vòng 24 giờ. Cần gấp? Gọi{" "}
                 <a href={PHONE_HREF} className="text-gold-deep underline underline-offset-4">
                   {SITE.phone}
@@ -158,7 +158,7 @@ export function Contact() {
                 Gửi nội dung này qua Zalo
               </button>
               {copied !== null && (
-                <p className="text-sm text-ink/60">
+                <p className="text-sm text-ink/70">
                   {copied
                     ? "Đã chép nội dung — dán vào ô chat Zalo để gửi."
                     : "Hãy chép nội dung phía trên và dán vào Zalo."}
@@ -174,7 +174,7 @@ export function Contact() {
               <button
                 type="button"
                 onClick={() => setStatus("idle")}
-                className="min-h-11 w-full text-sm text-ink/55 underline underline-offset-4 hover:text-ink"
+                className="min-h-11 w-full text-sm text-ink/70 underline underline-offset-4 hover:text-ink"
               >
                 Sửa lại thông tin
               </button>
@@ -197,7 +197,7 @@ export function Contact() {
                 </div>
               )}
               <div>
-                <label htmlFor="c-name" className="text-eyebrow text-xs text-ink/60">
+                <label htmlFor="c-name" className="text-eyebrow text-xs text-ink/70">
                   Họ tên
                 </label>
                 <input
@@ -213,7 +213,7 @@ export function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="c-phone" className="text-eyebrow text-xs text-ink/60">
+                <label htmlFor="c-phone" className="text-eyebrow text-xs text-ink/70">
                   Số điện thoại
                 </label>
                 <input
@@ -240,7 +240,7 @@ export function Contact() {
                 )}
               </div>
               <div>
-                <label htmlFor="c-message" className="text-eyebrow text-xs text-ink/60">
+                <label htmlFor="c-message" className="text-eyebrow text-xs text-ink/70">
                   Bạn quan tâm điều gì? (không bắt buộc)
                 </label>
                 <textarea
@@ -261,7 +261,13 @@ export function Contact() {
                 {status === "sending" && <Loader2 className="h-4 w-4 animate-spin" />}
                 {status === "sending" ? "Đang gửi…" : CTA.formSubmit}
               </button>
-              <p className="flex items-start gap-2 text-[13px] leading-relaxed text-ink/60">
+              {!hasLeadEndpoint() && (
+                // Chưa nối nơi nhận thông tin: báo trước để khách không bất ngờ khi phải gửi tiếp qua Zalo.
+                <p className="text-[13px] leading-relaxed text-ink/70">
+                  Sau khi bấm gửi, nội dung được soạn sẵn để bạn gửi tiếp qua Zalo hoặc gọi điện cho Anh Khoa.
+                </p>
+              )}
+              <p className="flex items-start gap-2 text-[13px] leading-relaxed text-ink/70">
                 <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0 text-gold-deep" strokeWidth={1.5} aria-hidden="true" />
                 Cam kết bảo mật thông tin. Tư vấn giải pháp kỹ thuật đúng nhu cầu, không chèo kéo bán hàng.
               </p>

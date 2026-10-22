@@ -16,7 +16,7 @@ export function TrustBar() {
               </span>
               <div>
                 <p className="text-[15px] font-semibold leading-snug text-ink">{title}</p>
-                <p className="mt-1 text-[13px] leading-relaxed text-ink/65 sm:text-sm">{body}</p>
+                <p className="mt-1 text-[13px] leading-relaxed text-ink/70 sm:text-sm">{body}</p>
               </div>
             </li>
           );

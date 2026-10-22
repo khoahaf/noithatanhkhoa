@@ -11,9 +11,9 @@ export function FeaturedCollections() {
     <section id="bo-suu-tap-noi-bat" className="section-y scroll-mt-20 bg-paper-dim">
       <div className="container-page">
         <div className="rule-diamond mb-10">
-          <p className="text-eyebrow shrink-0 text-xs text-gold-deep">
+          <h2 className="text-eyebrow shrink-0 text-xs text-gold-deep">
             Bộ Sưu Tập Nổi Bật
-          </p>
+          </h2>
         </div>
         <div className="grid gap-3 md:grid-cols-2">
           <CollectionTile collection={wide} tall />
@@ -55,9 +55,9 @@ function CollectionTile({
       <div className="absolute inset-0 bg-gradient-to-t from-night/90 via-night/10 to-transparent" />
       <div className="relative z-[1] flex h-full flex-col justify-end p-6 sm:p-8">
         <p className="text-eyebrow text-xs text-gold-light">{collection.tagline}</p>
-        <p className="mt-2 font-[family-name:var(--font-display)] text-3xl italic text-paper sm:text-4xl">
+        <h3 className="mt-2 font-[family-name:var(--font-display)] text-3xl italic text-paper sm:text-4xl">
           {collection.name}
-        </p>
+        </h3>
         <p className="mt-2 max-w-sm text-sm leading-relaxed text-paper/70">
           {collection.description}
         </p>

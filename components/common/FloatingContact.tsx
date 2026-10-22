@@ -23,7 +23,6 @@ export function FloatingContact() {
           href={ZALO_URL}
           target="_blank"
           rel="noopener noreferrer"
-          aria-label="Chat Zalo với Anh Khoa — phản hồi trong 5 phút"
           className="group flex items-center gap-3"
         >
           <span className="flex items-center gap-2 rounded-full bg-night px-4 py-2 text-xs text-paper shadow-lg">
@@ -61,7 +60,7 @@ export function FloatingContact() {
         >
           <MessageCircle className="h-4 w-4" strokeWidth={1.8} />
           Chat Zalo
-          <span className="flex items-center gap-1 text-xs font-normal text-white/80">
+          <span className="flex items-center gap-1 text-xs font-normal text-white">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-300" />
             ~5 phút
           </span>

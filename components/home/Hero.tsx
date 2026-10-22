@@ -26,7 +26,8 @@ export function Hero() {
         src={img.heroLivingRoom}
         alt="Không gian phòng khách với armchair vàng và tường tranh nghệ thuật"
         fill
-        priority
+        loading="eager"
+        fetchPriority="high"
         sizes="100vw"
         className="object-cover opacity-90"
       />

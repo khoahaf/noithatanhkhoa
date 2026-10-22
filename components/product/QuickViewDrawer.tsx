@@ -44,12 +44,12 @@ export function QuickViewDrawer() {
         aria-label={product ? `Chi tiết ${product.name}` : "Chi tiết sản phẩm"}
       >
         <div className="flex h-16 shrink-0 items-center justify-between border-b border-line/70 px-6">
-          <p className="text-eyebrow text-xs text-ink/60">Chi Tiết Sản Phẩm</p>
+          <p className="text-eyebrow text-xs text-ink/70">Chi Tiết Sản Phẩm</p>
           <button
             type="button"
             onClick={close}
             aria-label="Đóng"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/60 hover:bg-paper-dim hover:text-ink"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-ink/70 hover:bg-paper-dim hover:text-ink"
           >
             <X className="h-[18px] w-[18px]" strokeWidth={1.5} />
           </button>
@@ -116,33 +116,33 @@ function QuickViewBody({ product }: { product: Product }) {
           <dl className="mt-6 divide-y divide-line border-y border-line text-sm">
             {product.features && (
               <div className="flex justify-between gap-4 py-3">
-                <dt className="shrink-0 text-ink/55">Đặc tính</dt>
+                <dt className="shrink-0 text-ink/70">Đặc tính</dt>
                 <dd className="text-right text-ink">{product.features}</dd>
               </div>
             )}
             <div className="flex justify-between gap-4 py-3">
-              <dt className="text-ink/55">Chất liệu</dt>
+              <dt className="text-ink/70">Chất liệu</dt>
               <dd className="text-right text-ink">{product.material}</dd>
             </div>
             <div className="flex justify-between gap-4 py-3">
-              <dt className="text-ink/55">Kích thước mẫu (D x S x C)</dt>
+              <dt className="text-ink/70">Kích thước mẫu (D x S x C)</dt>
               <dd className="text-right font-[family-name:var(--font-mono)] text-[13px] text-ink">
                 {dims}
               </dd>
             </div>
             <div className="flex justify-between gap-4 py-3">
-              <dt className="text-ink/55">Giá tham khảo theo kích thước mẫu</dt>
+              <dt className="text-ink/70">Giá tham khảo theo kích thước mẫu</dt>
               <dd className="text-right font-medium text-gold-deep">{PRICE_NOTE}</dd>
             </div>
           </dl>
 
           {product.size && (
             <div className="mt-6 border border-line bg-paper-dim/60 p-5">
-              <p className="mb-3 text-eyebrow text-xs text-ink/55">
+              <p className="mb-3 text-eyebrow text-xs text-ink/70">
                 Tỷ lệ so với người cao 170 cm
               </p>
               <SizeDiagram size={product.size} />
-              <p className="mt-2 text-xs text-ink/50">
+              <p className="mt-2 text-xs text-ink/70">
                 Có thể may đo theo kích thước riêng cho không gian của bạn.
               </p>
             </div>
@@ -160,7 +160,7 @@ function QuickViewBody({ product }: { product: Product }) {
           Gửi yêu cầu báo giá mẫu này qua Zalo
         </button>
         {copied !== null && (
-          <p className="flex items-center gap-1.5 text-xs text-ink/60" role="status">
+          <p className="flex items-center gap-1.5 text-xs text-ink/70" role="status">
             {copied ? (
               <>
                 <Check className="h-3.5 w-3.5 text-emerald-600" />

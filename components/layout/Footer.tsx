@@ -84,7 +84,7 @@ export function Footer() {
       </div>
 
       <div className="border-t border-gold/15">
-        <div className="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-paper/40 md:flex-row">
+        <div className="container-page flex flex-col items-center justify-between gap-2 py-6 text-xs text-paper/65 md:flex-row">
           <p>&copy; {new Date().getFullYear()} {SITE.fullName}. Đã đăng ký bản quyền.</p>
           <p className="text-eyebrow text-xs">{SITE.tagline}</p>
         </div>

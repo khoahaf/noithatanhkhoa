@@ -12,7 +12,7 @@ export default function GlobalError({ reset }: { reset: () => void }) {
         <h1 className="mt-4 max-w-md font-[family-name:var(--font-display)] text-3xl italic sm:text-4xl">
           Rất tiếc, có trục trặc kỹ thuật
         </h1>
-        <p className="mt-3 max-w-md text-sm text-ink/60">
+        <p className="mt-3 max-w-md text-sm text-ink/70">
           Vui lòng thử lại, hoặc liên hệ trực tiếp {SITE.phone} nếu vấn đề vẫn
           tiếp diễn.
         </p>

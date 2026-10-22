@@ -14,7 +14,7 @@ export function SpaceNav() {
           Chọn Không Gian Cho Tổ Ấm
         </h2>
       </div>
-      <p className="mx-auto mb-10 max-w-xl text-center text-[15px] leading-relaxed text-ink/65">
+      <p className="mx-auto mb-10 max-w-xl text-center text-[15px] leading-relaxed text-ink/70">
         Giải pháp nội thất đồng bộ phong cách, tối ưu hóa diện tích sinh hoạt gia đình.
       </p>
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-5">

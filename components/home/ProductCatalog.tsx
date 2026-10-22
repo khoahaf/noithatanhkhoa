@@ -56,7 +56,7 @@ export function ProductCatalog() {
           })}
         </div>
 
-        <div className="mb-10 flex min-h-8 flex-wrap items-center justify-center gap-3 text-sm text-ink/60" aria-live="polite">
+        <div className="mb-10 flex min-h-8 flex-wrap items-center justify-center gap-3 text-sm text-ink/70" aria-live="polite">
           {collection ? (
             <>
               <span>
