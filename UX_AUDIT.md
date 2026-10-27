@@ -211,7 +211,7 @@ Nguyên tắc: không đổi bố cục, màu thương hiệu, nội dung kinh d
 | ID | Trạng thái | Đã làm | Cách kiểm tra lại |
 |---|---|---|---|
 | UX-01 | ⏸ **Chờ dữ liệu** · sửa tạm ✅ | Thêm dòng báo trước dưới nút gửi (chỉ hiện khi chưa có endpoint): "Sau khi bấm gửi, nội dung được soạn sẵn để bạn gửi tiếp qua Zalo…" | Đã kiểm tra: dòng hiện ở 375 px; luồng gửi → khung Zalo vẫn đúng |
-| UX-02 | ⏸ **Chờ dữ liệu** | — | — |
+| UX-02 | 🟡 Một phần (27/10/2026) | SĐT/Zalo đổi sang `0355 833 874` theo yêu cầu chủ shop; số ví dụ trong form `0912 345 678` → `09xx xxx xxx` để không trùng số người thật. Email, địa chỉ vẫn là dữ liệu mẫu | Build: 6 link `tel:0355833874`, 4 link `zalo.me/0355833874`, 0 số cũ |
 | UX-03 | ✅ Đã sửa, đã kiểm tra | Menu đầy đủ chỉ hiện từ `xl` (≥ 1280 px), dưới mức đó dùng menu thu gọn. Thêm `shrink-0`, `whitespace-nowrap` | 768, 1024, 1280, 1440 px: 0 phần tử tràn header, nút icon 44 × 44. Ảnh chụp 768 px trước/sau |
 | UX-04 | ✅ Đã sửa theo quyết định (chủ shop giao: "chọn cái hợp lý nhất") | Giữ nguyên mọi câu chữ đặc tả, chỉ sửa đích đến: menu/footer **"Bộ Sưu Tập" → "Không Gian"** (dẫn tới "Chọn Không Gian Cho Tổ Ấm"); nút Hero **"Khám Phá Bộ Sưu Tập ↓" → `#bo-suu-tap-noi-bat`** (khối "Bộ Sưu Tập Nổi Bật") | Script đối chiếu: mọi link `#…` ở header, footer và Hero đều dẫn tới khối có tiêu đề khớp nhãn |
 | UX-05 | ✅ Đã sửa theo quyết định "Đổi thành Cảm Hứng" | Tiêu đề **"Cảm Hứng Không Gian"**; mô tả "Gợi ý bố trí và phối đồ…"; 6 alt mô tả đúng nội dung từng ảnh (đã xem từng ảnh). Ghi chú trong code: ảnh minh hoạ, không phải nhà khách | 6/6 ảnh có alt riêng, không còn câu "của khách hàng" |

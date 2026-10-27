@@ -1,6 +1,6 @@
 /**
  * MỌI THÔNG TIN LIÊN HỆ NẰM Ở ĐÂY — sửa một chỗ, cả trang cập nhật.
- * ⚠️ phone / zaloPhone / email / address hiện là SỐ MẪU, cần thay bằng thông tin thật.
+ * phone / zaloPhone: số do chủ shop cung cấp (27/10/2026). ⚠️ email / address vẫn là dữ liệu mẫu.
  */
 export const SITE = {
   name: "Anh Khoa",
@@ -9,8 +9,8 @@ export const SITE = {
   description:
     "Nội thất Anh Khoa — sofa, giường, bàn ghế và phụ kiện trang trí cao cấp, may đo theo kích thước riêng, kiến tạo không gian sống ấm áp và bền vững.",
   url: "https://khoahaf.github.io/noithatanhkhoa",
-  phone: "0909 123 456",
-  zaloPhone: "0909123456",
+  phone: "0355 833 874",
+  zaloPhone: "0355833874",
   email: "hello@anhkhoa.vn",
   address: "12 Nguyễn Huệ, Quận 1, TP. Hồ Chí Minh",
   hours: "8:00 – 20:00, Thứ Hai – Chủ Nhật",

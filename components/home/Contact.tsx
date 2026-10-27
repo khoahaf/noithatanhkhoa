@@ -52,7 +52,7 @@ export function Contact() {
     e.preventDefault();
     const normalized = normalizeVNPhone(phone);
     if (!normalized) {
-      setPhoneError("Số điện thoại cần 10 số và bắt đầu bằng 0, ví dụ 0912 345 678.");
+      setPhoneError("Số điện thoại cần 10 số và bắt đầu bằng 0, ví dụ 09xx xxx xxx.");
       return;
     }
     setPhoneError("");
@@ -231,7 +231,7 @@ export function Contact() {
                   aria-invalid={Boolean(phoneError)}
                   aria-describedby={phoneError ? "c-phone-error" : undefined}
                   className="mt-2 h-12 w-full border border-ink/15 bg-paper px-3.5 text-[15px] text-ink placeholder:text-ink/35 focus:border-gold aria-[invalid=true]:border-red-700"
-                  placeholder="0912 345 678"
+                  placeholder="09xx xxx xxx"
                 />
                 {phoneError && (
                   <p id="c-phone-error" className="mt-1.5 text-sm text-red-700">
